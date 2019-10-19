@@ -1,4 +1,4 @@
-module raylib
+module vraylib
 #flag linux -lraylib -lGL -lm -lpthread -ldl -lrt -lX11
 #include "raylib.h"
 
