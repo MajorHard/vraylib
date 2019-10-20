@@ -1,3 +1,4 @@
 *.tmp.c
 examples/core/core_basic_window
 examples/core/core_input_keys
+examples/core/core_input_mouse
