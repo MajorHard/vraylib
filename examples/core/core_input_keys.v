@@ -38,7 +38,7 @@ fn main() {
 
 			vraylib.clear_background(vraylib.raywhite)
 			vraylib.draw_text("move the ball with arrow keys", 10, 10, 20, vraylib.darkgray)
-			C.DrawCircleV(ball_position, 50, vraylib.maroon)
+			vraylib.draw_circle_v(ball_position, 50, vraylib.maroon)
 		}
 	}
 
