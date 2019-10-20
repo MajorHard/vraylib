@@ -650,6 +650,69 @@ pub fn get_random_value(min, max int) int {
 	return C.GetRandomValue(min, max)
 }
 
+// Files management functions
+
+// Check if file exists
+pub fn file_exists(fileName string) bool {
+	return C.FileExists(fileName.str)
+}
+
+// Check file extension
+pub fn is_file_extension(fileName string, ext string) bool {
+	return C.IsFileExtension(fileName.str, ext.str)
+}
+
+// Get filename extension
+pub fn get_extension(fileName string) string {
+	return string(byteptr(C.GetExtension(fileName.str)))
+}
+
+
+// Get filename
+pub fn get_file_name(fileName string) string {
+	return string(byteptr(C.GetFileName(fileName.str)))
+}
+
+// Get full path of directory of filename
+pub fn get_directory_path(fileName string) string {
+	return string(byteptr(C.GetDirectoryPath(fileName.str)))
+}
+
+// Get current working directory
+pub fn get_working_directory() string {
+	return string(byteptr(C.GetWorkingDirectory()))
+}
+
+// Change working directory, returns true if success
+pub fn change_directory(dir string) bool {
+	return C.ChangeDirectory(dir.str)
+}
+
+// Get file modification time (last write time)
+pub fn get_file_mod_time(fileName string) i64 {
+	return C.GetFileModTime(fileName.str)
+}
+
+// Persistent storage management
+
+// Save integer value to storage file (to defined position)
+pub fn storage_save_value(position, value int) {
+	C.StorageSaveValue(position, value)
+}
+
+// Load integer value from storage file (from defined position)
+pub fn storage_load_value(position int) int {
+	return C.StorageLoadValue(position)
+}
+
+pub fn open_url(url string) {
+	C.OpenURL(url.str)
+}
+
+
+// --------------------------------------------
+// Input Handling Functions
+// --------------------------------------------
 
 // Input-related functions: mouse
 pub fn is_mouse_button_pressed(button int) bool {
