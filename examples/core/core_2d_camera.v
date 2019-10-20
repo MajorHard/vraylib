@@ -22,8 +22,8 @@ fn main() {
 
 
 	for i := 0; i < maxBuildings; i++ {
-		width := C.GetRandomValue(50, 200)
-		height := C.GetRandomValue(100, 800)
+		width := vraylib.get_random_value(50, 200)
+		height := vraylib.get_random_value(100, 800)
 		buildings << Rectangle{
 			x: -6000 + spacing,
 			y: screenHeight - 130 - height,
@@ -31,9 +31,9 @@ fn main() {
 			height: height
 		}
 		building_colors << Color{
-			r: C.GetRandomValue(200, 240),
-			g: C.GetRandomValue(200, 240),
-			b: C.GetRandomValue(200, 250),
+			r: vraylib.get_random_value(200, 240),
+			g: vraylib.get_random_value(200, 240),
+			b: vraylib.get_random_value(200, 250),
 			a: 255
 		}
 		spacing += width
@@ -113,5 +113,4 @@ fn main() {
 			vraylib.draw_text("- R to reset Zoom and Rotation", 40, 100, 10, vraylib.darkgray)
 		}
 	}
-
 }
