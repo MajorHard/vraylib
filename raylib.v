@@ -75,6 +75,13 @@ pub mut:
 }
 type Texture Texture2D
 
+struct C.RenderTexture2D {
+	id u32
+	texture Texture2D
+	depth Texture2D
+	depthTexture bool
+}
+
 struct C.Color {
 pub mut:
 	r byte
@@ -107,6 +114,16 @@ pub mut:
     target    Vector2
     rotation  f32
     zoom      f32
+}
+
+struct C.Camera3D {
+pub:
+mut:
+  position C.Vector3
+  target C.Vector3
+  up  C.Vector3
+  fovy f32
+  @type int
 }
 
 
@@ -336,6 +353,16 @@ pub fn window_should_close() bool {
 	return C.WindowShouldClose()
 }
 
+
+pub fn draw_fps(posX, posY int) {
+	C.DrawFPS(posX, posY)
+}
+
+// Drawing-related functions
+pub fn clear_background(c Color) {
+	C.ClearBackground(c)
+}
+
 pub fn begin_drawing() {
 	C.BeginDrawing()
 }
@@ -344,13 +371,30 @@ pub fn end_drawing() {
 	C.EndDrawing()
 }
 
-pub fn clear_background(c Color) {
-	C.ClearBackground(c)
+pub fn begin_mode_2d(camera Camera2D) {
+	C.BeginMode2D(camera)
 }
 
-pub fn draw_fps(posX, posY int) {
-	C.DrawFPS(posX, posY)
+pub fn end_mode_2d() {
+	C.EndMode2D()
 }
+
+pub fn begin_mode_3d(camera Camera3D) {
+	C.BeginMode3D(camera)
+}
+
+pub fn end_mode_3d() {
+	C.EndMode3D()
+}
+
+pub fn begin_texture_mode(target RenderTexture2D) {
+	C.BeginTextureMode(target)
+}
+
+pub fn end_texture_mode() {
+	C.EndTextureMode()
+}
+
 
 // Input-related functions: key
 pub fn is_key_down(key int) bool {

@@ -21,8 +21,7 @@ fn main() {
 	mut spacing := 0
 
 
-	mut i := 0
-	for i < maxBuildings {
+	for i := 0; i < maxBuildings; i++ {
 		width := C.GetRandomValue(50, 200)
 		height := C.GetRandomValue(100, 800)
 		buildings << Rectangle{
@@ -38,7 +37,6 @@ fn main() {
 			a: 255
 		}
 		spacing += width
-		i++
 	}
 	mut camera := Camera2D{
 		target: Vector2{ x: player.x + 20, y: player.y + 20 },
@@ -85,9 +83,11 @@ fn main() {
 			defer {  vraylib.end_drawing() }
 
 			vraylib.clear_background(vraylib.raywhite)
-			C.BeginMode2D(camera)
-				i = 0
-				for i  < maxBuildings {
+			{
+				vraylib.begin_mode_2d(camera)
+				defer { vraylib.end_mode_2d() }
+
+				for i := 0; i  < maxBuildings; i++ {
 					vraylib.draw_rectangle_rec(buildings[i], building_colors[i])
 					i++
 				}
@@ -95,7 +95,7 @@ fn main() {
 				vraylib.draw_rectangle_rec(player, vraylib.red)
 				vraylib.draw_line(int(camera.target.x), -screenHeight*10, int(camera.target.x), screenHeight*10, vraylib.green)
 				vraylib.draw_line(-screenWidth*10, int(camera.target.y), screenWidth*10, int(camera.target.y), vraylib.green)
-			C.EndMode2D()
+			}
 
 			vraylib.draw_text("SCREEN AREA", 640, 10, 20, vraylib.red)
 			vraylib.draw_rectangle(0, 0, screenWidth, 5, vraylib.red)
