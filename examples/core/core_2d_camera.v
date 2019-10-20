@@ -103,10 +103,14 @@ fn main() {
 			vraylib.draw_rectangle(screenWidth -5, 5, 5, screenHeight - 10, vraylib.red)
 			vraylib.draw_rectangle(0, screenHeight - 5, screenWidth, 5, vraylib.red)
 
-			vraylib.draw_rectangle_lines(10, 10, 250, 133, vraylib.blue)
-
+			vraylib.draw_rectangle(10, 10, 250, 113, vraylib.fade(vraylib.skyblue, 0.5))
+			vraylib.draw_rectangle_lines(10, 10, 250, 113, vraylib.blue)
 
 			vraylib.draw_text("Free 2D camera controls:", 20, 20, 10, vraylib.black)
+			vraylib.draw_text("- Right/Left to move Offset", 40, 40, 10, vraylib.darkgray)
+			vraylib.draw_text("- Mouse Wheel to Zoom in/out", 20, 60, 10, vraylib.darkgray)
+			vraylib.draw_text("- A / S to Rotate", 20, 80, 10, vraylib.darkgray)
+			vraylib.draw_text("- R to reset Zoom and Rotation", 40, 100, 10, vraylib.darkgray)
 		}
 	}
 
