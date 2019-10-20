@@ -1129,6 +1129,7 @@ pub fn (f Font) draw_text_rec(
 	tint Color) {
 	C.DrawTextRec(f, text.str, rec, fontSize, spacing, wordWrap, tint)
 }
+
 pub fn (f Font) draw_text_rec_ex(
 	text string,
 	rec Rectangle
@@ -1138,5 +1139,21 @@ pub fn (f Font) draw_text_rec_ex(
 	selectStart, selectLength int,
 	selectText, selectBack Color) {
 	C.DrawTextRecEx(f, text.str, rec, fontSize, spacing, wordWrap, tint, selectStart, selectLength, selectText, selectBack)
+}
 
+
+// Text misc. functions
+//
+
+// Measure string width for default font
+pub fn measure_text(text string, fontSize int) int {
+	return C.MeasureText(text.str, fontSize)
+}
+// Measure string size for Font
+pub fn measure_text_ex(font Font, text string, fontSize, spacing f32) Vector2 {
+	return C.MeasureTextEx(font, text.str, fontSize, spacing)
+}
+// Get index position for a unicode character on font
+pub fn get_glyph_index(font Font, character int) int {
+	return C.GetGlyphIndex(font, character)
 }
