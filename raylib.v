@@ -127,6 +127,28 @@ mut:
 }
 
 
+// Ray type (useful for raycast)
+struct C.Ray {
+    position Vector3
+    direction Vector3
+}
+type Ray C.Ray
+
+struct C.RayHitInfo {
+    hit bool
+    distance f32
+    position Vector3
+    normal Vector3
+}
+type RayHitInto C.RayHitInfo
+
+struct C.BoundingBox {
+    min Vector3
+    max Vector3
+}
+type BoundingBox C.BoundingBox
+
+
 // Color Constants
 const (
 	lightgray  = Color{ r: 200, g: 200, b: 200, a: 255 }
