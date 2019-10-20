@@ -373,6 +373,31 @@ pub fn set_exit_key(key int) {
 	C.SetExitKey(key)
 }
 
+// Color Related Functions
+pub fn color_to_int(color Color) int {
+	return C.ColorToInt(color)
+}
+
+pub fn color_normalize(color Color) Vector4 {
+	return C.ColorNormalize(color)
+}
+
+pub fn color_to_hsv(color Color) Vector3 {
+	return C.ColorToHSV(color)
+}
+
+pub fn color_from_hsv(hsv Vector3) Color {
+	return C.ColorFromHSV(hsv)
+}
+
+pub fn get_color(hexValue int) Color {
+	return C.GetColor(hexValue)
+}
+
+pub fn fade(color Color, alpha f32) Color {
+	return C.Fade(color, alpha)
+}
+
 
 // Input-related functions: mouse
 pub fn is_mouse_button_pressed(button int) bool {
