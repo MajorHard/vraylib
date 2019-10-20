@@ -31,7 +31,8 @@ fn main() {
 			vraylib.clear_background(vraylib.raywhite)
 			vraylib.draw_rectangle(screenWidth / 2 - 40, box_position_y, 80, 80, vraylib.maroon)
 
-			vraylib.draw_text("Use mouse wheel to move cube up and down!", 10, 40, 20, vraylib.gray)
+			vraylib.draw_text("Use mouse wheel to move cube up and down!", 10, 10, 20, vraylib.gray)
+			vraylib.draw_text('Box position Y: $box_position_y', 10, 40, 20, vraylib.lightgray)
 		}
 	}
 
