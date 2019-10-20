@@ -2,3 +2,4 @@
 examples/core/core_basic_window
 examples/core/core_input_keys
 examples/core/core_input_mouse
+examples/core/core_input_mouse_wheel
