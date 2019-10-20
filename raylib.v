@@ -578,81 +578,6 @@ pub fn end_texture_mode() {
 }
 
 
-// Input-related functions: key
-pub fn is_key_down(key int) bool {
-	return C.IsKeyDown(key)
-}
-
-pub fn is_key_pressed(key int)  bool {
-	return C.IsKeyPressed(key)
-}
-
-pub fn is_key_released(key int) bool {
-	return C.IsKeyReleased(key)
-}
-
-pub fn is_key_up(key int) bool {
-	return C.IsKeyUp(key)
-}
-
-pub fn set_exit_key(key int) {
-	C.SetExitKey(key)
-}
-
-
-// Input-related functions: gamepads
-//
-
-// Detect if a gamepad is available
-pub fn is_gamepad_available(gamepad int) bool {
-	return C.IsGamepadAvailable(gamepad)
-}
-
-// Check gamepad name (if available)
-pub fn is_gamepad_name(gamepad int, name string) bool {
-	return C.IsGamepadName(gamepad, name.str)
-}
-
-// Return gamepad internal name id
-pub fn get_gamepad_name(gamepad int) string {
-	return string(byteptr(C.GetGamepadName(gamepad)))
-}
-
-// Detect if a gamepad button has been pressed once
-pub fn is_gamepad_button_pressed(gamepad, button int) bool {
-	return C.IsGamepadButtonPressed(gamepad, button)
-}
-
-// Detect if a gamepad button is being pressed
-pub fn is_gamepad_button_down(gamepad, button int) bool {
-	return C.IsGamepadButtonDown(gamepad, button)
-}
-
-// Detect if a gamepad button has been released once
-pub fn is_gamepad_button_releaed(gamepad, button int) bool {
-	return C.IsGamepadButtonReleased(gamepad, button)
-}
-
-// Detect if a gamepad button is NOT being pressed
-pub fn is_gamepad_button_up(gamepad, button int) bool {
-	return C.IsGamepadButtonUp(gamepad, button)
-}
-
-// Get the last gamepad button pressed
-pub fn get_gamepad_button_pressed() int {
-	return C.GetGamepadButtonPressed()
-}
-
-// Return gamepad axis count for a gamepad
-pub fn get_gamepad_axis_count(gamepad int) int {
-	return C.GetGamepadAxisCount(gamepad)
-}
-
-// Return axis movement value for a gamepad axis
-pub fn get_gamepad_axis_movement(gamepad, axis int) f32 {
-	return C.GetGamepadAxisMovement(gamepad, axis)
-}
-
 // Color Related Functions
 pub fn color_to_int(color Color) int {
 	return C.ColorToInt(color)
@@ -768,7 +693,36 @@ pub fn open_url(url string) {
 // Input Handling Functions
 // --------------------------------------------
 
+// Input-related functions: key
+pub fn is_key_down(key int) bool {
+	return C.IsKeyDown(key)
+}
+
+pub fn is_key_pressed(key int)  bool {
+	return C.IsKeyPressed(key)
+}
+
+pub fn is_key_released(key int) bool {
+	return C.IsKeyReleased(key)
+}
+
+pub fn is_key_up(key int) bool {
+	return C.IsKeyUp(key)
+}
+
+pub fn get_key_pressed() int {
+	return C.GetKeyPressed()
+}
+
+pub fn set_exit_key(key int) {
+	C.SetExitKey(key)
+}
+
+
 // Input-related functions: mouse
+//
+
+
 pub fn is_mouse_button_pressed(button int) bool {
 	return C.IsMouseButtonPressed(button)
 }
@@ -784,6 +738,7 @@ pub fn is_mouse_button_released(button int) bool {
 pub fn is_mouse_button_up(button int) bool {
 	return C.IsMouseButtonUp(button)
 }
+
 
 pub fn get_mouse_x() int {
 	return C.GetMouseX()
@@ -812,6 +767,78 @@ pub fn set_mouse_scale(scaleX, scaleY f32) {
 pub fn get_mouse_wheel_move() int {
 	return C.GetMouseWheelMove()
 }
+
+// Input-related functions: touch
+//
+
+// Returns touch position X for touch point 0 (relative to screen size)
+pub fn get_touch_x() int {
+	return C.GetTouchX()
+}
+
+// Returns touch position Y for touch point 0 (relative to screen size)
+pub fn get_touch_y() int {
+	return C.GetTouchY()
+}
+
+// Returns touch position XY for a touch point index (relative to screen size)
+pub fn get_touch_position(index int) Vector2 {
+	return C.GetTouchPosition(index)
+}
+
+// Input-related functions: gamepads
+//
+
+// Detect if a gamepad is available
+pub fn is_gamepad_available(gamepad int) bool {
+	return C.IsGamepadAvailable(gamepad)
+}
+
+// Check gamepad name (if available)
+pub fn is_gamepad_name(gamepad int, name string) bool {
+	return C.IsGamepadName(gamepad, name.str)
+}
+
+// Return gamepad internal name id
+pub fn get_gamepad_name(gamepad int) string {
+	return string(byteptr(C.GetGamepadName(gamepad)))
+}
+
+// Detect if a gamepad button has been pressed once
+pub fn is_gamepad_button_pressed(gamepad, button int) bool {
+	return C.IsGamepadButtonPressed(gamepad, button)
+}
+
+// Detect if a gamepad button is being pressed
+pub fn is_gamepad_button_down(gamepad, button int) bool {
+	return C.IsGamepadButtonDown(gamepad, button)
+}
+
+// Detect if a gamepad button has been released once
+pub fn is_gamepad_button_releaed(gamepad, button int) bool {
+	return C.IsGamepadButtonReleased(gamepad, button)
+}
+
+// Detect if a gamepad button is NOT being pressed
+pub fn is_gamepad_button_up(gamepad, button int) bool {
+	return C.IsGamepadButtonUp(gamepad, button)
+}
+
+// Get the last gamepad button pressed
+pub fn get_gamepad_button_pressed() int {
+	return C.GetGamepadButtonPressed()
+}
+
+// Return gamepad axis count for a gamepad
+pub fn get_gamepad_axis_count(gamepad int) int {
+	return C.GetGamepadAxisCount(gamepad)
+}
+
+// Return axis movement value for a gamepad axis
+pub fn get_gamepad_axis_movement(gamepad, axis int) f32 {
+	return C.GetGamepadAxisMovement(gamepad, axis)
+}
+
 
 
 // Shape Drawing Functions
