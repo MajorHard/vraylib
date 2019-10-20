@@ -535,11 +535,6 @@ pub fn get_time() f64 {
 	return C.GetTime()
 }
 
-
-pub fn draw_fps(posX, posY int) {
-	C.DrawFPS(posX, posY)
-}
-
 // Drawing-related functions
 pub fn clear_background(c Color) {
 	C.ClearBackground(c)
@@ -1077,7 +1072,47 @@ pub fn check_collision_point_triangle(point, p1, p2, p3 Vector2) bool {
 	return C.CheckCollisionPointTriangle(point, p1, p2, p3)
 }
 
+
+// Font loading/unloading functions
+
+// Get the default Font
+pub fn get_font_defauilt() Font {
+	return C.GetFontDefault()
+}
+
+// Load font from file into GPU memory (VRAM)
+pub fn load_font(fileName string) Font {
+	return C.LoadFont(fileName.str)
+}
+
+// Load font from file with extended parameters
+pub fn load_font_ex(fileName string, fontSize int, fontChars &int, charsCount int) Font {
+	return C.LoadFontEx(fileName.str, fontSize, fontChars, charsCount)
+}
+
+// Load font from Image (XNA style)
+pub fn load_font_from_image(image Image, key Color, firstChar int) Font {
+	return C.LoadFontFromImage(image, key, firstChar)
+}
+
+// Load font data for further use
+pub fn load_font_data(fileName string, fontSize int, fontChars &int, charsCount, @type int) &CharInfo {
+	return C.LoadFontData(fileName.str, fontSize, fontChars, charsCount, @type)
+}
+
+// Unload Font
+pub fn unload_font(font Font) {
+	C.UnloadFont(font)
+}
+
+
 // Text Drawing Functions
+//
+
+pub fn draw_fps(posX, posY int) {
+	C.DrawFPS(posX, posY)
+}
+
 pub fn draw_text(text string, posX, posY, fontSize int, color Color) {
 	C.DrawText(text.str, posX, posY, fontSize, color)
 }
