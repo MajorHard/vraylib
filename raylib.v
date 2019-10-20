@@ -243,7 +243,70 @@ const(
     key_kp_add          = 334
     key_kp_enter        = 335
     key_kp_equal        = 336
+
+	// Android Button
+	key_back            = 4
+    key_menu            = 82
+    key_volume_up       = 24
+    key_volume_down     = 25
 )
+
+enum MouseButton {
+	left right middle
+}
+
+enum GamepadPlayer {
+	player1 player2 player3 player4
+}
+
+enum GamepadButton {
+	unknown
+
+    // This is normally [A,B,X,Y]/[Circle,Triangle,Square,Cross]
+    // No support for 6 button controllers though..
+    left_face_up
+    left_face_right
+    left_face_down
+    left_face_left
+
+    // This is normally a DPAD
+    right_face_up
+    right_face_right
+    right_face_down
+    right_face_left
+
+    // Triggers
+    left_trigger_1
+    left_trigger_2
+    right_trigger_1
+    right_trigger_2
+
+    // These are buttons in the center of the gamepad
+    middle_left     //PS3 Select
+    middle          //PS Button/XBOX Button
+    middle_right    //PS3 Start
+
+    // These are the joystick press in buttons
+    left_thumb
+    right_thumb
+}
+
+enum GamepadAxis {
+	// This is here just for error checking
+    unknown
+
+    // Left stick
+    left_x
+    left_y
+
+    // Right stick
+    right_x
+    right_y
+
+    // Pressure levels for the back triggers
+    left_trigger      // [1..-1] (pressure-level)
+    right_trigger      // [1..-1] (pressure-level)
+}
 
 
 pub fn set_target_fps(fps int) {
