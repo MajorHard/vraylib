@@ -101,6 +101,15 @@ pub mut:
 	chars &CharInfo
 }
 
+struct C.Camera2D {
+pub mut:
+    offset    Vector2
+    target    Vector2
+    rotation  f32
+    zoom      f32
+}
+
+
 // Color Constants
 const (
 	lightgray  = Color{ r: 200, g: 200, b: 200, a: 255 }
