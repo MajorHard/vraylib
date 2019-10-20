@@ -496,6 +496,22 @@ pub fn set_clipboard_text(text string) {
 	C.SetClipboardText(text.str)
 }
 
+// Screen-space-related functions
+//
+
+// Returns a ray trace from mouse position
+pub fn get_mouse_ray(mousePosition Vector2, camera Camera3D) Ray {
+	return C.GetMouseRay(mousePosition, camera)
+}
+// Returns the screen space position for a 3d world space position
+pub fn get_world_to_screen(position Vector3, camera Camera3D) Vector2 {
+	return C.GetWorldToScreen(position, camera)
+}
+// Returns camera transform matrix (view matrix)
+pub fn get_camera_matrix(camera Camera3D) Matrix {
+	return C.GetCameraMatrix(camera)
+}
+
 // Timing-related functions
 //
 
