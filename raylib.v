@@ -149,6 +149,17 @@ struct C.BoundingBox {
 }
 type BoundingBox C.BoundingBox
 
+// N-Patch layout info
+struct C.NPatchInfo {
+	sourceRec Rectangle
+    left int
+    top int
+    right int
+    bottom int
+    @type int
+}
+type NPatchInfo C.NPatchInfo
+
 
 // Color Constants
 const (
@@ -1384,6 +1395,43 @@ pub fn set_texture_wrap(texture Texture2D, wrapMode int) {
 	C.SetTextureWrap(texture, wrapMode)
 }
 
+// Texture2D drawing functions
+//
+
+// Draw a Texture2D
+pub fn draw_texture(texture Texture2D, posX, posY int, tint Color) {
+	C.DrawTexture(texture, posX, posY, tint)
+}
+
+// Draw a Texture2D with position defined as Vector2
+pub fn draw_texture_v(texture Texture2D, position Vector2, tint Color) {
+	C.DrawTextureV(texture, position, tint)
+}
+
+// Draw a Texture2D with extended parameters
+pub fn draw_texture_ex(texture Texture2D, position Vector2, rotation, scale f32, tint Color) {
+	C.DrawTextureEx(texture, position, rotation, scale, tint)
+}
+
+// Draw a part of a texture defined by a rectangle
+pub fn draw_texture_rec(texture Texture2D, sourceRec Rectangle, position Vector2, tint Color) {
+	C.DrawTextureRec(texture, sourceRec, position, tint)
+}
+
+// Draw texture quad with tiling and offset parameters
+pub fn draw_texture_quad(texture Texture2D, tiling, offset Vector2, quad Rectangle, tint Color) {
+	C.DrawTextureQuad(texture, tiling, offset, quad, tint)
+}
+
+// Draw a part of a texture defined by a rectangle with 'pro' parameters
+pub fn draw_texture_pro(texture Texture2D, sourceRec, destRec Rectangle, origin Vector2, rotation f32, tint Color) {
+	C.DrawTexturePro(texture, sourceRec, destRec, origin, rotation, tint)
+}
+
+// Draws a texture (or part of it) that stretches or shrinks nicely
+pub fn draw_texture_n_patch(texture Texture2D, nPatchInfo NPatchInfo, destRec Rectangle, origin Vector2, rotation f32, tint Color) {
+	C.DrawTextureNPatch(texture, nPatchInfo, destRec, origin, rotation, tint)
+}
 
 // Font loading/unloading functions
 
