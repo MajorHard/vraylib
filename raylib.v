@@ -371,6 +371,9 @@ enum GamepadAxis {
 }
 
 
+/// -----------------------------------------------------
+/// Module - Core
+/// -----------------------------------------------------
 // Window-Related Functions
 
 // Initialize window and OpenGL context
@@ -1089,7 +1092,7 @@ pub fn check_collision_point_triangle(point, p1, p2, p3 Vector2) bool {
 }
 
 // -------------------------------------------------
-// 	Texture
+// 	Module - Textures
 // -------------------------------------------------
 
 // Image/Texture2D data loading/unloading/saving functions
@@ -1441,7 +1444,9 @@ pub fn draw_texture_n_patch(texture Texture2D, nPatchInfo NPatchInfo, destRec Re
 	C.DrawTextureNPatch(texture, nPatchInfo, destRec, origin, rotation, tint)
 }
 
-// Font loading/unloading functions
+/// --------------------------------------------
+///  Module - Text
+/// --------------------------------------------
 
 // Get the default Font
 pub fn get_font_defauilt() Font {
