@@ -74,6 +74,7 @@ pub mut:
 	format int
 }
 type Texture Texture2D
+type TextureCubemap Texture2D
 
 struct C.RenderTexture2D {
 	id u32
@@ -1070,6 +1071,165 @@ pub fn check_collision_point_circle(point, center Vector2, radius f32) bool {
 
 pub fn check_collision_point_triangle(point, p1, p2, p3 Vector2) bool {
 	return C.CheckCollisionPointTriangle(point, p1, p2, p3)
+}
+
+// Image/Texture2D data loading/unloading/saving functions
+
+// Load image from file into CPU memory (RAM)
+pub fn load_image(fileName string) Image {
+	return C.LoadImage(fileName.str)
+}
+
+// Load image from Color array data (RGBA - 32bit)
+pub fn load_image_ex(pixel &Color, width, height int) Image {
+	return C.LoadImageEx(pixel, width, height)
+
+}
+
+// Load image from raw data with parameters
+pub fn load_image_proc(data voidptr, width, height, format int) Image {
+	return C.LoadImagePro(data, width, height, format)
+}
+
+// Load image from RAW file data
+pub fn load_image_raw(fileName string, width, height, format, headerSize int) Image {
+	return C.LoadImageRaw(fileName.str, width, height, format, headerSize)
+}
+
+// Export image data to file
+pub fn export_image(image Image, fileName string) {
+	C.ExportImage(image, fileName.str)
+}
+
+// Export image as code file defining an array of bytes
+pub fn export_image_as_code(image Image, fileName string) {
+	C.ExportImageAsCode(image, fileName.str)
+}
+
+// Load texture from file into GPU memory (VRAM)
+pub fn load_texture(fileName string) Texture2D {
+	return C.LoadTexture(fileName.str)
+}
+
+// Load texture from image data
+pub fn load_texture_from_image(image Image) Texture2D {
+	return C.LoadTextureFromImage(image)
+}
+
+// Load cubemap from image, multiple image cubemap layouts supported
+// pub fn load_texture_cubemap(image Image, layoutType int) TextureCubemap {
+// 	return C.TextureCubemap(image, layoutType)
+// }
+
+// Load texture for rendering (framebuffer)
+pub fn load_render_texture(width, height int) RenderTexture2D {
+	return C.LoadRenderTexture(width, height)
+}
+
+// Unload image from CPU memory (RAM)
+pub fn unload_image(image Image) {
+	C.UnloadImage(image)
+}
+
+// Unload texture from GPU memory (VRAM)
+pub fn unload_texture(texture Texture2D) {
+	C.UnloadTexture(texture)
+}
+
+// Unload render texture from GPU memory (VRAM)
+pub fn unload_render_texture(target RenderTexture2D) {
+	C.UnloadRenderTexture(target)
+}
+
+// Color *GetImageData(Image image);                                                                   // Get pixel data from image as a Color struct array
+// Vector4 *GetImageDataNormalized(Image image);                                                       // Get pixel data from image as Vector4 array (float normalized)
+
+// Get pixel data size in bytes (image or texture)
+pub fn get_pixel_data_size(width, height, format int) int {
+	return C.GetPixelDataSize(width, height, format)
+}
+
+// Get pixel data from GPU texture and return an Image
+pub fn get_texture_data(texture Texture2D) Image {
+	return C.GetTextureData(texture)
+}
+
+// Get pixel data from screen buffer and return an Image (screenshot)
+pub fn get_screen_data() Image {
+	return C.GetScreenData()
+}
+
+// Update GPU texture with new data
+pub fn update_texture(texture Texture2D, pixels voidptr) {
+	C.UpdateTexture(texture, pixels)
+}
+
+// Image manipulation functions
+//
+
+// Create an image duplicate (useful for transformations)
+pub fn image_copy(image Image) Image {
+	return C.ImageCopy(image)
+}
+
+// Convert image to POT (power-of-two)
+pub fn image_to_pot(image &Image, fillColor Color) {
+	C.ImageToPOT(image, fillColor)
+}
+
+// Convert image data to desired format
+pub fn image_format(image &Image, newFormat int) {
+	C.ImageFormat(image, newFormat)
+}
+
+// Apply alpha mask to image
+pub fn image_alpha_mask(image &Image, alphaMask Image) {
+	C.ImageAlphaMask(image, alphaMask)
+}
+
+// Clear alpha channel to desired color
+pub fn image_alpha_clear(image &Image, color Color, threshold f32) {
+	C.ImageAlphaClear(image, color, threshold)
+}
+
+// Crop image depending on alpha value
+pub fn image_alpha_crop(image &Image, threshold f32) {
+	C.ImageAlphaCrop(image, threshold)
+}
+
+// Premultiply alpha channe
+pub fn image_alpha_premultiply(image &Image) {
+	C.ImageAlphaPremultiply(image)
+}
+
+// Crop an image to a defined rectangle
+pub fn image_crop(image &Image, crop Rectangle) {
+	C.ImageCrop(image, crop)
+}
+
+// Resize image (Bicubic scaling algorithm)
+pub fn image_resize(image &Image, newWidth, newHeight int) {
+	C.ImageResize(image, newWidth, newHeight)
+}
+
+// Resize image (Nearest-Neighbor scaling algorithm)
+pub fn image_resize_nn(image &Image, newWidth, newHeight int) {
+	C.ImageResizeNN(image, newWidth, newHeight)
+}
+
+// Resize canvas and fill with color
+pub fn image_resize_canvas(image &Image, newWidth, newHeight, offsetX, offsetY int, color Color) {
+	C.ImageResizeCanvas(image, newWidth, newHeight, offsetX, offsetY, color)
+}
+
+// Generate all mipmap levels for a provided image
+pub fn image_mipmaps(image &Image) {
+	C.ImageMipmaps(image)
+}
+
+// Dither image data to 16bpp or lower (Floyd-Steinberg dithering)
+pub fn image_dither(image &Image, rBpp, gBpp, bBpp, aBpp int) {
+	C.ImageDither(image, rBpp, gBpp, bBpp, aBpp)
 }
 
 
