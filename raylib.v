@@ -927,6 +927,10 @@ pub fn set_camera_move_controls(frontKey, backKey, rightKey, leftKey, upKey, dow
 	C.SetCameraMoveControls(frontKey, backKey, rightKey, leftKey, upKey, downKey)
 }
 
+// --------------------------------------------------------
+//  Module: Shapes
+// --------------------------------------------------------
+
 
 // Shape Drawing Functions
 // Basic shapes drawing functions
@@ -1083,6 +1087,10 @@ pub fn check_collision_point_circle(point, center Vector2, radius f32) bool {
 pub fn check_collision_point_triangle(point, p1, p2, p3 Vector2) bool {
 	return C.CheckCollisionPointTriangle(point, p1, p2, p3)
 }
+
+// -------------------------------------------------
+// 	Texture
+// -------------------------------------------------
 
 // Image/Texture2D data loading/unloading/saving functions
 
