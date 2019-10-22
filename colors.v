@@ -31,27 +31,33 @@ const (
     raywhite   = Color{ r: 245, g: 245, b: 245, a: 255 }
 )
 
-// Color Related Functions
+// Returns hexadecimal value for a Color
 pub fn color_to_int(color Color) int {
 	return C.ColorToInt(color)
 }
 
+
+// Return color normalized as float [0..1]
 pub fn color_normalize(color Color) Vector4 {
 	return C.ColorNormalize(color)
 }
 
+// Return HSV values for a Color
 pub fn color_to_hsv(color Color) Vector3 {
 	return C.ColorToHSV(color)
 }
 
+// Return Color from HSV values
 pub fn color_from_hsv(hsv Vector3) Color {
 	return C.ColorFromHSV(hsv)
 }
 
+// Returns a Color struct from hexadecimal value
 pub fn get_color(hexValue int) Color {
 	return C.GetColor(hexValue)
 }
 
+// Color fade-in or fade-out, alpha goes from 0.0 to 1.0
 pub fn fade(color Color, alpha f32) Color {
 	return C.Fade(color, alpha)
 }
