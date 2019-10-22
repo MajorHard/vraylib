@@ -49,7 +49,7 @@ pub mut:
 }
 
 // Transformation properties
-struct Transform {
+struct C.Transform {
 pub mut:
 	translation Vector3
 	rotation Quaternion
@@ -78,6 +78,16 @@ pub mut:
   boneCount int
   bones &BoneInfo
   bindPose &Transform
+}
+
+// Model Animation
+struct C.ModelAnimation {
+pub mut:
+  boneCount int
+  bones &BoneInfo
+
+  fameCount int
+  framePoses &Transform
 }
 
 // Basic geometric 3D shapes drawing functions
@@ -196,3 +206,165 @@ pub fn export_mesh(mesh Mesh, fileName string) {
 pub fn unload_mesh(mesh Mesh) {
 	C.UnloadMesh(mesh)
 }
+
+
+// Material loading/unloading functions
+//
+
+// Load materials from model file
+pub fn load_materials(fileName string, materialCount &int) &Material {
+	return C.LoadMaterials(fileName.str, materialCount)
+}
+
+// Load default material (Supports: DIFFUSE, SPECULAR, NORMAL maps)
+pub fn load_material_default() Material {
+	return C.LoadMaterialDefault()
+}
+
+// Unload material from GPU memory (VRAM)
+pub fn unload_material(material Material) {
+	C.UnloadMaterial(material)
+}
+
+// Set texture for a material map type (MAP_DIFFUSE, MAP_SPECULAR...)
+pub fn set_material_texture(material &Material, mapType int, texture Texture2D) {
+	C.SetMaterialTexture(material, mapType, texture)
+}
+
+// Set material for a mesh
+pub fn set_model_mesh_material(model &Model, meshId, materialId int) {
+	C.SetModelMeshMaterial(model, meshId, materialId)
+}
+
+
+// Model animations loading/unloading functions
+//
+
+// Load model animations from file
+pub fn load_model_animations(fileName string, animsCount &int) &ModelAnimation {
+	return C.LoadModelAnimations(fileName.str, animsCount)
+}
+
+// Update model animation pose
+pub fn update_model_animation(model Model, anim ModelAnimation, frame int) {
+	C.UpdateModelAnimation(model, anim, frame)
+}
+
+// Unload animation data
+pub fn unload_model_animation(anim ModelAnimation) {
+	C.UnloadModelAnimation(anim)
+}
+
+// Check model animation skeleton match
+pub fn is_model_animation_valid(model Model, anim ModelAnimation) bool {
+	return C.IsModelAnimationValid(model, anim)
+}
+
+
+// Mesh generation functions
+//
+
+// Generate polygonal mesh
+pub fn gen_mesh_poly(sides int, radius f32) {
+	C.GenMeshPoly(sides, radius)
+}
+
+// Generate plane mesh (with subdivisions)
+pub fn gen_mesh_plane(width, length, f32, resX, resZ int) Mesh {
+	return C.GenMeshPlane(width, length, resX, resZ)
+}
+
+// Generate cuboid mesh
+pub fn gen_mesh_cube(width, height, length f32) Mesh {
+	return C.GenMeshCube(width, height, length)
+}
+
+// Generate sphere mesh (standard sphere)
+pub fn gen_mesh_sphere(radius f32, rings, slices int) Mesh {
+	return C.GenMeshSphere(radius, rings, slices)
+}
+
+// Generate half-sphere mesh (no bottom cap)
+pub fn gen_mesh_hemi_sphere(radius f32, rings, slices int) Mesh {
+	return C.GenMeshHemiSphere(radius, rings, slices)
+}
+
+// Generate cylinder mesh
+pub fn gen_mesh_cylinder(radius, height f32, slices int) Mesh {
+	return C.GenMeshCylinder(radius, height, slices)
+}
+
+// Generate torus mesh
+pub fn gen_mesh_torus(radius, size f32, radSeg, sides int) Mesh {
+	return C.GenMeshTorus(radius, size, radSeg, sides)
+}
+
+// Generate trefoil knot mesh
+pub fn gen_mesh_knot(radius, size f32, radSeg, sides int) Mesh {
+	return C.GenMeshKnot(radius, size, radSeg, sides)
+}
+
+// Generate heightmap mesh from image data
+pub fn gen_mesh_height_map(heightmap Image, size Vector3) Mesh {
+	return C.GenMeshHeightmap(heightmap, size)
+}
+
+// Generate cubes-based map mesh from image data
+pub fn gen_mesh_cubicmap(cubicmap Image, cubeSize Vector3) Mesh {
+	return C.GenMeshCubicmap(cubicmap, cubeSize)
+}
+
+
+// Mesh manipulation functions
+//
+
+// Compute mesh bounding box limits
+pub fn mesh_bounding_box(mesh Mesh) BoundingBox {
+	return C.MeshBoundingBox(mesh)
+}
+
+// Compute mesh tangents
+pub fn mesh_tangents(mesh &Mesh) {
+	C.MeshTangents(mesh)
+}
+
+// Compute mesh binormals
+pub fn mesh_binormals(mesh &Mesh) {
+	C.MeshBinormals(mesh)
+}
+
+// Model drawing functions
+pub fn draw_model(model Model, position Vector3, scale f32, tint Color) {
+	C.DrawModel(model, position, scale, tint)
+}
+
+// Draw a model with extended parameters
+pub fn draw_model_ex(model Model, position, rotationAxis Vector3, rotationAngle f32, scale Vector3, tint Color) {
+	C.DrawModelEx(model, position, rotationAxis, rotationAngle, scale, tint)
+}
+
+// Draw a model wires (with texture if set)
+pub fn draw_model_wires(model Model, position Vector3, scale f32, tint Color) {
+	C.DrawModelWires(model, position, scale, tint)
+}
+
+// Draw a model wires (with texture if set) with extended parameters
+pub fn draw_model_wires_ex(model Model, position, rotationAxis Vector3, rotationAngle f32, scale Vector3, tint Color) {
+	C.DrawModelWiresEx(model, position, rotationAxis, rotationAngle, scale, tint)
+}
+
+// Draw bounding box (wires)
+pub fn draw_bounding_box(box BoundingBox, color Color) {
+	C.DrawBoundingBox(box, color)
+}
+
+// Draw a billboard texture
+pub fn draw_billboard(camera Camera3D, texture Texture2D, center Vector3, size f32, tint Color) {
+	C.DrawBillboard(camera, texture, center, size, tint)
+}
+
+// Draw a billboard texture defined by sourceRec
+pub fn draw_billboard_rec(camera Camera3D, texture Texture2D, sourceRec Rectangle, center Vector3, size f32, tint Color) {
+	C.DrawBillboardRec(camera, texture, sourceRec, center, size, tint)
+}
+//
