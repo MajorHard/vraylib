@@ -203,7 +203,7 @@ pub fn export_mesh(mesh Mesh, fileName string) {
 }
 
 // Unload mesh from memory (RAM and/or VRAM)
-pub fn unload_mesh(mesh Mesh) {
+pub fn unload_mesh(mesh &Mesh) {
 	C.UnloadMesh(mesh)
 }
 
@@ -402,7 +402,7 @@ pub fn check_collision_ray_box(ray Ray, box BoundingBox) bool {
 }
 
 // Get collision info between ray and model
-pub fn get_collision_ray_model(ray Ray, model Model) RayHitInfo {
+pub fn get_collision_ray_model(ray Ray, model &Model) RayHitInfo {
 	return C.GetCollisionRayModel(ray, model)
 }
 
