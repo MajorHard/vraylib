@@ -91,6 +91,10 @@ pub mut:
 	a byte
 }
 
+pub fn (c Color) str() string {
+	return "Color { r: $c.r, g: $c.g, b: $c.b, a: $c.a }"
+}
+
 struct C.CharInfo {
 pub mut:
 	value int
@@ -159,5 +163,3 @@ struct C.NPatchInfo {
     @type int
 }
 type NPatchInfo C.NPatchInfo
-
-
