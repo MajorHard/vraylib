@@ -367,4 +367,51 @@ pub fn draw_billboard(camera Camera3D, texture Texture2D, center Vector3, size f
 pub fn draw_billboard_rec(camera Camera3D, texture Texture2D, sourceRec Rectangle, center Vector3, size f32, tint Color) {
 	C.DrawBillboardRec(camera, texture, sourceRec, center, size, tint)
 }
+
+// Collision detection functions
 //
+
+// Detect collision between two spheres
+pub fn check_collision_spheres(centerA Vector3, radiusA f32, centerB Vector3, radiusB f32) bool {
+	return C.CheckCollisionSpheres(centerA, radiusA, centerB, radiusB)
+}
+
+// Detect collision between two bounding boxes
+pub fn check_collision_boxes(box1, box2 BoundingBox) bool {
+	return C.CheckCollisionBoxes(box1, box2)
+}
+
+// Detect collision between box and sphere
+pub fn check_collision_box_sphere(box BoundingBox, centerSphere Vector3, radiusSphere f32) bool {
+	return C.CheckCollisionBoxSphere(box, centerSphere, radiusSphere)
+}
+
+// Detect collision between ray and sphere
+pub fn check_collision_ray_sphere(ray Ray, spherePosition Vector3, sphereRadius f32) bool {
+	return C.CheckCollisionRaySphere(ray, spherePosition, sphereRadius)
+}
+
+// Detect collision between ray and sphere, returns collision point
+pub fn check_collision_ray_sphere_ex(ray Ray, spherePosition Vector3, sphereRadius f32, collisionPoint &Vector3) bool {
+	return C.CheckCollisionRaySphereEx(ray, spherePosition, sphereRadius, collisionPoint)
+}
+
+// Detect collision between ray and box
+pub fn check_collision_ray_box(ray Ray, box BoundingBox) bool {
+	return C.CheckCollisionRayBox(ray, box)
+}
+
+// Get collision info between ray and model
+pub fn get_collision_ray_model(ray Ray, model Model) RayHitInfo {
+	return C.GetCollisionRayModel(ray, model)
+}
+
+// Get collision info between ray and triangle
+pub fn get_collision_ray_triangle(ray Ray, p1, p2, p3 Vector3) RayHitInfo {
+	return C.GetCollisionRayTriangle(ray, p1, p2, p3)
+}
+
+// Get collision info between ray and ground plane (Y-normal plane)
+pub fn get_collision_ray_ground(ray Ray, groundHeight f32) RayHitInfo {
+	return C.GetCollisionRayGround(ray, groundHeight)
+}
