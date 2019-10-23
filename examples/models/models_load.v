@@ -15,8 +15,8 @@ fn main() {
 
 	mut suzanne := vraylib.load_model("resources/Suzanne.gltf")
 	suzanne_albeido := vraylib.load_texture("resources/Suzanne_BaseColor.png")
-	base_materials := suzanne.materials[0].maps[C.MAP_DIFFUSE]
-	suzanne.materials[0].maps[C.MAP_DIFFUSE] = MaterialMap{
+	base_materials := suzanne.materials[0].maps[vraylib.diffuse]
+	suzanne.materials[0].maps[vraylib.diffuse] = MaterialMap{
 		texture: suzanne_albeido,
 		color: base_materials.color,
 		value: base_materials.value
@@ -30,10 +30,10 @@ fn main() {
 		target: Vector3{ x: 0, y: 10, z: 0 }
 		up: Vector3{ x: 0, y: 1, z: 0 }
 		fovy: 45
-		@type: C.CAMERA_PERSPECTIVE
+		@type: vraylib.camera_perspective
 	}
 
-	vraylib.set_camera_mode(camera, C.CAMERA_FREE)
+	vraylib.set_camera_mode(camera, vraylib.camera_free_mode)
 
 	for {
 		if vraylib.window_should_close() {
@@ -48,7 +48,7 @@ fn main() {
 				vraylib.begin_mode_3d(camera)
 				defer { vraylib.end_mode_3d() }
 
-				C.DrawGrid(20, 10)
+				vraylib.draw_grid(20, 10)
 				vraylib.draw_model(suzanne,  Vector3{ x: 0, y: 0, z: 0 }, 10, vraylib.lightgray)
 			}
 

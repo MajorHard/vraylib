@@ -3,6 +3,20 @@ module vraylib
 //------------------------------------------------------------------------------------
 // Camera System Functions (Module: camera)
 //------------------------------------------------------------------------------------
+
+const (
+	camera_custom_mode 		 = 	0
+	camera_free_mode 		 = 	1
+	camera_orbital_mode 	 =  2
+	camera_first_person_mode = 	3
+	camera_third_person_mode = 	4
+)
+
+const (
+	camera_perspective 		= 0
+	camera_orthographic		= 1
+)
+
 // Set camera mode (multiple camera modes available)
 pub fn set_camera_mode(camera Camera3D, mode int) {
 	C.SetCameraMode(camera, mode)
