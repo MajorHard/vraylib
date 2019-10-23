@@ -26,12 +26,6 @@ pub mut:
 }
 
 // Shader type (generic)
-struct C.Shader {
-pub:
-    id u32
-    locs &u32
-}
-
 // Material texture map
 struct C.MaterialMap {
 pub mut:
