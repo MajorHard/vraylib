@@ -66,11 +66,6 @@ pub fn load_wave(fileName string) Wave {
 	return C.LoadWave(fileName.str)
 }
 
-// Load wave data from raw array data
-pub fn load_wave_ex(data voidptr, sampleCount, sampleRate, sampleSize, channels int) {
-	C.LoadWaveEx(data, sampleCount, sampleRate, sampleSize, channels)
-}
-
 // Load sound from file
 pub fn load_sound(fileName string) Sound {
 	return C.LoadSound(fileName.str)
@@ -254,7 +249,7 @@ pub fn close_audio_stream(stream AudioStream) {
 
 // Check if any audio stream buffers requires refill
 pub fn is_audio_buffer_processed(stream AudioStream) bool {
-	return C.IsAudioBufferProcessed(stream)
+	return C.IsAudioStreamProcessed(stream)
 }
 
 // Play audio stream
