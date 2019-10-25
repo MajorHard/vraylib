@@ -1,12 +1,12 @@
 module vraylib
 
-struct C.Shader {
+pub struct C.Shader {
 pub mut:
 	id u32
 	locs &u32
 }
 
-struct C.VrDeviceInfo {
+pub struct C.VrDeviceInfo {
 pub mut:
 	hResolution int
 	vResolution int

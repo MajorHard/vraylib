@@ -1,7 +1,7 @@
 module vraylib
 
 // Color Constants
-const (
+pub const (
 	lightgray  = Color{ r: 200, g: 200, b: 200, a: 255 }
     gray       = Color{ r: 130, g: 130, b: 130, a: 255 }
     darkgray   = Color{ r: 80,  g: 80,  b: 80,  a: 255 }

@@ -1,7 +1,7 @@
 module vraylib
 
 // Wave type, defines audio wave data
-struct C.Wave {
+pub struct C.Wave {
 pub mut:
 	sampleCount u32
 	sampleRate u32
@@ -11,7 +11,7 @@ pub mut:
 }
 
 // Audio stream type
-struct C.AudioStream {
+pub struct C.AudioStream {
 pub mut:
     sampleRate u32
     sampleSize u32
@@ -19,13 +19,13 @@ pub mut:
 	buffer &C.rAudioBuffer
 }
 
-struct C.Sound {
+pub struct C.Sound {
 pub mut:
     sampleCount u32
     stream AudioStream
 }
 
-struct C.Music {
+pub struct C.Music {
 pub mut:
     ctxType int
     ctxData voidptr
@@ -248,9 +248,9 @@ pub fn close_audio_stream(stream AudioStream) {
 }
 
 // Check if any audio stream buffers requires refill
-pub fn is_audio_buffer_processed(stream AudioStream) bool {
-	return C.IsAudioStreamProcessed(stream)
-}
+// pub fn is_audio_buffer_processed(stream AudioStream) bool {
+// 	return C.IsAudioStreamProcessed(stream)
+// }
 
 // Play audio stream
 pub fn play_audio_stream(stream AudioStream) {
