@@ -7,14 +7,12 @@ pub mut:
 	x f32
 	y f32
 }
-type Vector2 C.Vector2
 
 pub struct C.Vector3 {
 pub mut:
 	x f32
 	y f32
 	z f32
-
 }
 
 pub struct C.Vector4 {
@@ -46,7 +44,7 @@ pub mut:
 	m15 f32
 }
 
-struct C.Image {
+pub struct C.Image {
 pub mut:
 	data voidptr
 	width int
@@ -78,9 +76,8 @@ pub struct C.RenderTexture2D {
 	id u32
 	texture Texture2D
 	depth Texture2D
-	depthTexture bool
+	depth_texture bool
 }
-type RenderTexture2D C.RenderTexture2D
 
 pub struct C.Color {
 pub mut:
@@ -97,16 +94,16 @@ pub fn (c Color) str() string {
 pub struct C.CharInfo {
 pub mut:
 	value int
-	offsetX int
-	offsetY int
-	advanceX int
+	offset_x int
+	offset_y int
+	advance_x int
 	image Image
 }
 
 pub struct C.Font {
 pub mut:
-	baseSize int
-	charsCount int
+	base_size int
+	chars_count int
 	texture Texture2D
 	recs &Rectangle
 	chars &CharInfo
@@ -123,9 +120,9 @@ pub mut:
 pub struct C.Camera3D {
 pub:
 mut:
-  position C.Vector3
-  target C.Vector3
-  up  C.Vector3
+  position Vector3
+  target Vector3
+  up  Vector3
   fovy f32
   @type int
 }
@@ -136,29 +133,25 @@ pub struct C.Ray {
     position Vector3
     direction Vector3
 }
-type Ray C.Ray
 
-struct C.RayHitInfo {
+pub struct C.RayHitInfo {
     hit bool
     distance f32
     position Vector3
     normal Vector3
 }
-type RayHitInto C.RayHitInfo
 
-struct C.BoundingBox {
+pub struct C.BoundingBox {
     min Vector3
     max Vector3
 }
-type BoundingBox C.BoundingBox
 
 // N-Patch layout info
-struct C.NPatchInfo {
-	sourceRec Rectangle
+pub struct C.NPatchInfo {
+	source_rec Rectangle
     left int
     top int
     right int
     bottom int
     @type int
 }
-type NPatchInfo C.NPatchInfo

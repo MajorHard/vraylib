@@ -2,7 +2,7 @@ module vraylib
 
 // Input-related functions: mouse
 
-const (
+pub const (
 	mouse_left_button = 0
 	mouse_right_button = 1
 	mouse_middle_button = 2
