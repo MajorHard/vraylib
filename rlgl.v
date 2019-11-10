@@ -21,7 +21,7 @@ pub mut:
 }
 
 
-const (
+pub const (
 	albedo			= 0
 	diffuse			= 0
 	metalness		= 1

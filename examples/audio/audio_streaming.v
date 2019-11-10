@@ -50,7 +50,7 @@ fn main() {
 		circles[i].radius = vraylib.get_random_value(10, 40)
 		circles[i].position.x = vraylib.get_random_value(int(circles[i].radius), screenWidth - int(circles[i].radius))
 		circles[i].position.y = vraylib.get_random_value(int(circles[i].radius), screenHeight - int(circles[i].radius))
-		circles[i].speed = vraylib.get_random_value(1, 100)/2000.0
+		circles[i].speed = f32(vraylib.get_random_value(1, 100))/2000.0
 		circles[i].color = colors[vraylib.get_random_value(0, 13)]
 	}
 
@@ -88,7 +88,7 @@ fn main() {
 				circles[i].radius = vraylib.get_random_value(10, 40)
 				circles[i].position.x = vraylib.get_random_value(int(circles[i].radius), screenWidth - int(circles[i].radius))
 				circles[i].position.y = vraylib.get_random_value(int(circles[i].radius), screenHeight - int(circles[i].radius))
-				circles[i].speed = vraylib.get_random_value(1, 100)/2000.0
+				circles[i].speed = f32(vraylib.get_random_value(1, 100))/2000.0
 				circles[i].color = colors[vraylib.get_random_value(0, 13)]
 			}
 

@@ -3,7 +3,7 @@ module vraylib
 // Input-related functions: key
 
 // Key Constants
-const(
+pub const(
     key_apostrophe      = 39
     key_comma           = 44
     key_minus           = 45

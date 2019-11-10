@@ -4,7 +4,7 @@ module vraylib
 // Camera System Functions (Module: camera)
 //------------------------------------------------------------------------------------
 
-const (
+pub const (
 	camera_custom_mode 		 = 	0
 	camera_free_mode 		 = 	1
 	camera_orbital_mode 	 =  2
@@ -12,7 +12,7 @@ const (
 	camera_third_person_mode = 	4
 )
 
-const (
+pub const (
 	camera_perspective 		= 0
 	camera_orthographic		= 1
 )
