@@ -1,6 +1,17 @@
 module vraylib
 
 // Drawing-related functions
+
+fn C.ClearBackground(color C.Color)
+fn C.BeginDrawing()
+fn C.EndDrawing()
+fn C.BeginMode2D(camera C.Camera2D)
+fn C.EndMode2D()
+fn C.BeginMode3D(camera C.Camera3D)
+fn C.EndMode3D()
+fn C.BeginTextureMode(target C.RenderTexture2D)
+fn C.EndTextureMode()
+
 pub fn clear_background(c Color) {
 	C.ClearBackground(c)
 }

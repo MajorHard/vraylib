@@ -4,6 +4,14 @@ module vraylib
 // Camera System Functions (Module: camera)
 //------------------------------------------------------------------------------------
 
+fn C.SetCameraMode(camera C.Camera3D, mode int)
+fn C.UpdateCamera(camera C.Camera3D)
+
+fn C.SetCameraPanControl(panKey int)
+fn C.SetCameraAltControl(altKey int)
+fn C.SetCameraSmoothZoomControl(szKey int)
+fn C.SetCameraMoveControls(frontKey, backKey, rightKey, leftKey, upKey, downKey int)
+
 pub const (
 	camera_custom_mode 		 = 	0
 	camera_free_mode 		 = 	1

@@ -1,5 +1,12 @@
 module vraylib
 
+fn C.ColorToInt(color C.Color) int
+fn C.ColorNormalize(color C.Color) C.Vector4
+fn C.ColorToHSV(color C.Color) C.Vector3
+fn C.ColorFromHSV(hsv C.Vector3) C.Color
+fn C.GetColor(hexValue int) C.Color
+fn C.Fade(color C.Color, alpha f32) C.Color
+
 // Color Constants
 pub const (
 	lightgray  = Color{ r: 200, g: 200, b: 200, a: 255 }
