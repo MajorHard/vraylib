@@ -4,6 +4,16 @@ module vraylib
 // Gestures and Touch Handling Functions (Module: gestures)
 //------------------------------------------------------------------------------------
 
+fn C.SetGesturesEnabled(gestureFlags u32)
+fn C.IsGestureDetected(gesture int) bool
+fn C.GetGestureDetected() int
+fn C.GetTouchPointsCount() int
+fn C.GetGestureHoldDuration() f32
+fn C.GetGestureDragVector() C.Vector2
+fn C.GetGestureDragAngle() f32
+fn C.GetGesturePinchVector() C.Vector2
+fn C.GetGesturePinchAngle() f32
+
 // Enable a set of gestures using flags
 pub fn set_gestures_enabled(gestureFlags u32) {
 	C.SetGesturesEnabled(gestureFlags)

@@ -2,6 +2,34 @@ module vraylib
 
 // Window-Related Functions
 
+fn C.InitWindow(with, height int, title byteptr)
+fn C.WindowShouldClose() bool
+fn C.CloseWindow()
+fn C.IsWindowReady() bool
+fn C.IsWindowMinimized() bool
+fn C.IsWindowResized() bool
+fn C.IsWindowHidden() bool
+fn C.ToggleFullscreen()
+fn C.UnhideWindow()
+fn C.HideWindow()
+fn C.SetWindowIcon(image C.Image)
+fn C.SetWindowTitle(title byteptr)
+fn C.SetWindowPosition(x, y int)
+fn C.SetWindowMonitor(monitor int)
+fn C.SetWindowMinSize(width, height int)
+fn C.SetWindowSize(width, height int)
+fn C.GetWindowHandle() voidptr
+fn C.GetScreenWidth() int
+fn C.GetScreenHeight() int
+fn C.GetMonitorCount() int
+fn C.GetMonitorWidth(monitor int) int
+fn C.GetMonitorHeight(monitor int) int
+fn C.GetMonitorPhysicalWidth(monitor int) int
+fn C.GetMonitorPhysicalHeight(monitor int) int
+fn C.GetMonitorName(monitor int) byteptr
+fn C.GetClipboardText() byteptr
+fn C.SetClipboardText(text byteptr)
+
 // Initialize window and OpenGL context
 pub fn init_window(w, h int, title string) {
 	C.InitWindow(w, h, title.str)

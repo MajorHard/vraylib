@@ -3,6 +3,46 @@ module vraylib
 // Image manipulation functions
 //
 
+fn C.ImageCopy(image C.Image) C.Image
+fn C.ImageToPOT(image C.Image, fillColor C.Color)
+fn C.ImageFormat(image C.Image, newFormat int)
+fn C.ImageAlphaMask(image C.Image, alphaMask C.Image)
+fn C.ImageAlphaClear(image C.Image, color C.Color, threshold f32)
+fn C.ImageAlphaCrop(image C.Image, threshold f32)
+fn C.ImageAlphaPremultiply(image C.Image)
+fn C.ImageCrop(image C.Image, crop C.Rectangle)
+fn C.ImageResize(image C.Image, newWidth, newHeight int)
+fn C.ImageResizeNN(image C.Image, newWidth, newHeight int)
+fn C.ImageResizeCanvas(image C.Image, newWidth, newHeight, offsetX, offsetY int, color C.Color)
+fn C.ImageMipmaps(image C.Image)
+fn C.ImageDither(image C.Image, rBpp, gBpp, bBpp, aBpp int)
+fn C.ImageExtractPalette(image C.Image, maxPaletteSize int, extractCount int) C.Color
+fn C.ImageText(text byteptr, fontSize int, color C.Color) C.Image
+fn C.ImageTextEx(font C.Font, text byteptr, fontSize, spacing f32, tint C.Color) C.Image
+fn C.ImageDrawRectangle(dst C.Image, rec C.Rectangle, color C.Color)
+fn C.ImageDrawRectangleLines(dst C.Image, rec C.Rectangle, thick int, color C.Color)
+fn C.ImageDrawText(dst C.Image, position C.Vector2, text byteptr, fontSize int, color C.Color)
+fn C.ImageDrawTextEx(dst C.Image, position C.Vector2, font C.Font, text byteptr, fontSize, spacing f32, color C.Color)
+fn C.ImageFlipVertical(image C.Image)
+fn C.ImageFlipHorizontal(image C.Image)
+fn C.ImageRotateCW(image C.Image)
+fn C.ImageRotateCCW(image C.Image)
+fn C.ImageColorTint(image C.Image, color C.Color)
+fn C.ImageColorInvert(image C.Image)
+fn C.ImageColorGrayscale(image C.Image)
+fn C.ImageColorContrast(image C.Image, contrast f32)
+fn C.ImageColorBrightness(image C.Image, brightness int)
+fn C.ImageColorReplace(image C.Image, color, replace C.Color)
+
+fn C.GenImageColor(width, height int, color C.Color) C.Image
+fn C.GenImageGradientV(width, height int, top, bottom C.Color) C.Image
+fn C.GenImageGradientH(width, height int, left, right C.Color) C.Image
+fn C.GenImageGradientRadial(width, height int, density f32, inner, outer C.Color) C.Image
+fn C.GenImageChecked(width, height, checksX, checksY int, col1, col2 C.Color) C.Image
+fn C.GenImageWhiteNoise(width, height int, factor f32) C.Image
+fn C.GenImagePerlinNoise(width, height, offsetX, offsetY int, scale f32) C.Image
+fn C.GenImageCellular(width, height, tileSize int) C.Image
+
 // Create an image duplicate (useful for transformations)
 pub fn image_copy(image Image) Image {
 	return C.ImageCopy(image)
@@ -70,7 +110,7 @@ pub fn image_dither(image &Image, rBpp, gBpp, bBpp, aBpp int) {
 
 // Extract color palette from image to maximum size (memory should be freed)
 pub fn image_extract_palette(image Image, maxPaletteSize, extractCount &int) &Color {
-	return C.ImageExtractPalette(image, maxPaletteSize, extractCount)
+	return C.ImageExtractPalette(image, *maxPaletteSize, extractCount)
 }
 
 // Create an image from text (default font)

@@ -4,6 +4,35 @@ module vraylib
 // 	Module - Textures
 // -------------------------------------------------
 
+fn C.LoadImage(fileName byteptr) C.Image
+fn C.LoadImageEx(pixels C.Color, width, height int) C.Image
+fn C.LoadImagePro(data voidptr, width, height, format int) C.Image
+fn C.LoadImageRaw(fileName byteptr, width, height, format, headerSize int) C.Image
+fn C.ExportImage(image C.Image, fileName byteptr)
+fn C.ExportImageAsCode(image C.Image, fileName byteptr)
+fn C.LoadTexture(fileName byteptr) C.Texture2D
+fn C.LoadTextureFromImage(image C.Image) C.Texture2D
+fn C.LoadRenderTexture(width, height int) C.RenderTexture2D
+fn C.UnloadImage(image C.Image)
+fn C.UnloadTexture(texture C.Texture2D)
+fn C.UnloadRenderTexture(target C.RenderTexture2D)
+fn C.GetPixelDataSize(width, height, format int) int
+fn C.GetTextureData(texture C.Texture2D) C.Image
+fn C.GetScreenData() C.Image
+fn C.UpdateTexture(texture C.Texture2D, pixels voidptr)
+
+fn C.GenTextureMipmaps(texture C.Texture2D)
+fn C.SetTextureFilter(texture C.Texture2D, filterMode int)
+fn C.SetTextureWrap(texture C.Texture2D, wrapMode int)
+
+fn C.DrawTexture(texture C.Texture2D, posX, posY int, tint C.Color)
+fn C.DrawTextureV(texture C.Texture2D, position C.Vector2, tint C.Color)
+fn C.DrawTextureEx(texture C.Texture2D, position C.Vector2, rotation, scale f32, tint C.Color)
+fn C.DrawTextureRec(texture C.Texture2D, sourceRec C.Rectangle, position C.Vector2, tint C.Color)
+fn C.DrawTextureQuad(texture C.Texture2D, tiling, offset C.Vector2, quad C.Rectangle, tint C.Color)
+fn C.DrawTexturePro(texture C.Texture2D, sourceRec, destRec C.Rectangle, origin C.Vector2, rotation f32, tint C.Color)
+fn C.DrawTextureNPatch(texture C.Texture2D, nPatchInfo C.NPatchInfo, destRec C.Rectangle, origin C.Vector2, rotation f32, tint C.Color)
+
 // Image/Texture2D data loading/unloading/saving functions
 
 // Load image from file into CPU memory (RAM)

@@ -118,8 +118,7 @@ pub mut:
 }
 
 pub struct C.Camera3D {
-pub:
-mut:
+pub mut:
   position Vector3
   target Vector3
   up  Vector3

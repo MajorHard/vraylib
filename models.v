@@ -1,5 +1,70 @@
 module vraylib
 
+fn C.DrawLine3D(startPos, endPos C.Vector3, color C.Color)
+fn C.DrawCircle3D(center C.Vector3, radius f32, rotationAxis C.Vector3, rotationAngle f32, color C.Color)
+fn C.DrawCube(position C.Vector3, width, height, length f32, color C.Color)
+fn C.DrawCubeTexture(texture C.Texture2D, position C.Vector3, with, height, length f32, color C.Color)
+fn C.DrawSphere(centerPos C.Vector3, radius f32, color C.Color)
+fn C.DrawSphereEx(centerPos C.Vector3, radius f32, rings, slices int, color C.Color)
+fn C.DrawSphereWires(centerPos C.Vector3, radius f32, rings, slices int, color C.Color)
+fn C.DrawCylinder(position C.Vector3, radiusTop, radiusBottom, height f32, slices int, color C.Color)
+fn C.DrawCylinderWires(position C.Vector3, radiusTop, radiusBottom, height f32, slices int, color C.Color)
+fn C.DrawPlane(centerPos C.Vector3, size C.Vector2, color C.Color)
+fn C.DrawRay(ray C.Ray, color C.Color)
+fn C.DrawGrid(slices int, spacing f32)
+fn C.DrawGizmo(position C.Vector3)
+
+fn C.LoadModel(fileName byteptr) C.Model
+fn C.LoadModelFromMesh(mesh C.Mesh) C.Model
+fn C.UnloadModel(model C.Model)
+
+fn C.LoadMeshes(fileName byteptr, meshCount int) C.Mesh
+fn C.ExportMesh(mesh C.Mesh, fileName byteptr)
+fn C.UnloadMesh(mesh C.Mesh)
+
+fn C.LoadMaterials(fileName byteptr, materialCount int) C.Material
+fn C.LoadMaterialDefault() C.Material
+fn C.UnloadMaterial(material C.Material)
+fn C.SetMaterialTexture(material C.Material, mapType int, texture C.Texture2D)
+fn C.SetModelMeshMaterial(model C.Model, meshId, materialId int)
+
+fn C.LoadModelAnimations(fileName byteptr, animsCount int) C.ModelAnimation
+fn C.UpdateModelAnimation(model C.Model, anim C.ModelAnimation, frame int)
+fn C.UnloadModelAnimation(anim C.ModelAnimation)
+fn C.IsModelAnimationValid(model C.Model, anim C.ModelAnimation) bool
+
+fn C.GenMeshPoly(sides int, radius f32) C.Mesh
+fn C.GenMeshPlane(width, length f32, resX, resZ int) C.Mesh
+fn C.GenMeshCube(width, height, length f32) C.Mesh
+fn C.GenMeshSphere(radius f32, rings, slices int) C.Mesh
+fn C.GenMeshHemiSphere(radius f32, rings, slices int) C.Mesh
+fn C.GenMeshCylinder(radius, height f32, slices int) C.Mesh
+fn C.GenMeshTorus(radius, size f32, radSeg, sides int) C.Mesh
+fn C.GenMeshKnot(radius, size f32, radSeg, sides int) C.Mesh
+fn C.GenMeshHeightmap(heightmap C.Image, size C.Vector3) C.Mesh
+fn C.GenMeshCubicmap(cubicmap C.Image, cubeSize C.Vector3) C.Mesh
+
+fn C.MeshBoundingBox(mesh C.Mesh) C.BoundingBox
+fn C.MeshTangents(mesh C.Mesh)
+fn C.MeshBinormals(mesh C.Mesh)
+
+fn C.DrawModel(model C.Model, position C.Vector3, scale f32, tint C.Color)
+fn C.DrawModelEx(model C.Model, position, rotationAxis C.Vector3, rotationAngle f32, scale C.Vector3, tint C.Color)
+fn C.DrawModelWires(model C.Model, position C.Vector3, scale f32, tint C.Color)
+fn C.DrawModelWiresEx(model C.Model, position, rotationAxis C.Vector3, rotationAngle f32, scale C.Vector3, tint C.Color)
+fn C.DrawBoundingBox(box C.BoundingBox, color C.Color)
+fn C.DrawBillboard(camera C.Camera3D, texture C.Texture2D, center C.Vector3, size f32, tint C.Color)
+fn C.DrawBillboardRec(camera C.Camera3D, texture C.Texture2D, sourceRec C.Rectangle, center C.Vector3, size f32, tint C.Color)
+
+fn C.CheckCollisionSpheres(centerA C.Vector3, radiusA f32, centerB C.Vector3, radiusB f32) bool
+fn C.CheckCollisionBoxes(box1, box2 C.BoundingBox) bool
+fn C.CheckCollisionBoxSphere(box C.BoundingBox, centerSphere C.Vector3, radiusSphere f32) bool
+fn C.CheckCollisionRaySphere(ray C.Ray, spherePosition C.Vector3, sphereRadius f32) bool
+fn C.CheckCollisionRaySphereEx(ray C.Ray, spherePosition C.Vector3, sphereRadius f32, collisionPoint C.Vector3) bool
+fn C.CheckCollisionRayBox(ray C.Ray, box C.BoundingBox) bool
+fn C.GetCollisionRayModel(ray C.Ray, model C.Model) C.RayHitInfo
+fn C.GetCollisionRayTriangle(ray C.Ray, p1, p2, p3 C.Vector3) C.RayHitInfo
+fn C.GetCollisionRayGround(ray C.Ray, groundHeight f32) RayHitInfo
 
 // Vertex data definning a mesh
 // NOTE: Data stored in CPU memory (and GPU)
@@ -198,7 +263,7 @@ pub fn export_mesh(mesh Mesh, fileName string) {
 
 // Unload mesh from memory (RAM and/or VRAM)
 pub fn unload_mesh(mesh &Mesh) {
-	C.UnloadMesh(*mesh)
+	C.UnloadMesh(mesh)
 }
 
 
@@ -396,7 +461,7 @@ pub fn check_collision_ray_box(ray Ray, box BoundingBox) bool {
 }
 
 // Get collision info between ray and model
-pub fn get_collision_ray_model(ray Ray, model Model) RayHitInfo {
+pub fn get_collision_ray_model(ray Ray, model &Model) RayHitInfo {
 	return C.GetCollisionRayModel(ray, model)
 }
 

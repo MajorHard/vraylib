@@ -4,6 +4,47 @@ module vraylib
 //  Module: Shapes
 // --------------------------------------------------------
 
+fn C.DrawPixel(posX, posY int, color C.Color)
+fn C.DrawPixelV(position C.Vector2, color C.Color)
+fn C.DrawLine(startPosX, startPosY, endPosX, endPosY int, color C.Color)
+fn C.DrawLineV(startPos, endPos C.Vector2, color C.Color)
+fn C.DrawLineEx(startPos, endPos C.Vector2, thick f32, color C.Color)
+fn C.DrawLineBezier(startPos, endPos C.Vector2, thick f32, color C.Color)
+fn C.DrawLineStrip(points C.Vector2, numPoints int, color C.Color)
+fn C.DrawCircle(centerX, centerY int, radius f32, color C.Color)
+fn C.DrawCircleSector(center C.Vector2, radius f32, startAngle, endAngle, segments int, color C.Color)
+fn C.DrawCircleSectorLines(center C.Vector2, radius f32, startAngle, endAngle, segments int, color C.Color)
+fn C.DrawCircleGradient(centerX, centerY int, radius f32, coor1, color2 C.Color)
+fn C.DrawCircleV(center C.Vector2, radius f32, color C.Color)
+fn C.DrawCircleLines(centerX, centerY int, radius f32, color C.Color)
+fn C.DrawRing(center C.Vector2, innerRadius, outerRadius f32, startAngle, endAngle, segments int, color C.Color)
+fn C.DrawRingLines(center C.Vector2, innerRadius, outerRadius f32, startAngle, endAngle, segments int, color C.Color)
+fn C.DrawRectangle(posX, posY, width, height int, color C.Color)
+fn C.DrawRectangleV(position, size C.Vector2, color C.Color)
+fn C.DrawRectangleRec(rec C.Rectangle, color C.Color)
+fn C.DrawRectanglePro(rec C.Rectangle, origin C.Vector2, rotation f32, color C.Color)
+fn C.DrawRectangleGradientV(posX, posY, width, height int, color1, color2 C.Color)
+fn C.DrawRectangleGradientH(posX, posY, width, height int, color1, color2 C.Color)
+fn C.DrawRectangleGradientEx(rec C.Rectangle, col1, col2, col3, col4 C.Color)
+fn C.DrawRectangleLines(posX, posY, width, height int, color C.Color)
+fn C.DrawRectangleLinesEx(rec C.Rectangle, lineThick int, color C.Color)
+fn C.DrawRectangleRounded(rec C.Rectangle, roundness f32, segments int, color C.Color)
+fn C.DrawRectangleRoundedLines(rec C.Rectangle, roundness f32, segments, lineThick int, color C.Color)
+fn C.DrawTriangle(v1, v2, v3 C.Vector2, color C.Color)
+fn C.DrawTriangleLines(v1, v2, v3 C.Vector2, color C.Color)
+fn C.DrawTriangleFan(points C.Vector2, numPoints int, color C.Color)
+fn C.DrawPoly(center C.Vector2, sides int, radius, rotation f32, color C.Color)
+
+fn C.SetShapesTexture(texture C.Texture2D, source C.Rectangle)
+
+fn C.CheckCollisionRecs(rec1, rec2 C.Rectangle) bool
+fn C.CheckCollisionCircles(center1 C.Vector2, radius1 f32, center2 C.Vector2, radius2 f32) bool
+fn C.CheckCollisionCircleRec(center C.Vector2, radius f32, rec C.Rectangle) bool
+fn C.GetCollisionRec(rec1, rec2 C.Rectangle) C.Rectangle
+fn C.CheckCollisionPointRec(point C.Vector2, rec C.Rectangle) bool
+fn C.CheckCollisionPointCircle(point C.Vector2, center C.Vector2, radius f32) bool
+fn C.CheckCollisionPointTriangle(point, p1, p2, p3 C.Vector3) bool
+
 // Shape Drawing Functions
 // Basic shapes drawing functions
 pub fn draw_pixel(posX, posY int, color Color) {
