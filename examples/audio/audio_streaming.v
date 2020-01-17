@@ -1,5 +1,6 @@
 module main
 
+import os
 import MajorHard.vraylib
 
 const (
@@ -54,7 +55,7 @@ fn main() {
 		circles[i].color = colors[vraylib.get_random_value(0, 13)]
 	}
 
-	music := vraylib.load_music_stream("resources/mini1111.xm")
+	music := vraylib.load_music_stream(os.resource_abs_path("resources/mini1111.xm"))
 	defer { vraylib.unload_music_stream(music) }
 	vraylib.play_music_stream(music)
 	mut time_played := 0.0
