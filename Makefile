@@ -17,8 +17,6 @@ examples: $(EXAMPLES)
 clean:
 	rm -rf $(EXAMPLES)
 
-
-regen: z_c_fns.v
-
-z_c_fns.v:
-	@$(v) run tools/raylib2v.v $(RAYLIB_H) > z_c_fns.v
+regen:
+	rm -rf z_c_fns.v
+	$(V) run tools/raylib2v.v $(RAYLIB_H) > z_c_fns.v
