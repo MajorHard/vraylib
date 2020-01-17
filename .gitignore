@@ -6,3 +6,6 @@ examples/core/core_input_mouse_wheel
 examples/core/core_2d_camera
 examples/models/models_load
 examples/audio/audio_streaming
+*~
+fns.txt
+tools/raylib2v
