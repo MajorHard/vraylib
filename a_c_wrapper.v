@@ -125,7 +125,7 @@ pub mut:
   fovy f32
   @type int
 }
-
+type Camera C.Camera3D 
 
 // Ray type (useful for raycast)
 pub struct C.Ray {
@@ -154,3 +154,5 @@ pub struct C.NPatchInfo {
     bottom int
     @type int
 }
+
+type PRectangle &C.Rectangle
