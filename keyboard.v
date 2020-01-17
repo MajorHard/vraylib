@@ -121,27 +121,27 @@ pub const(
     key_volume_down     = 25
 )
 
-pub fn is_key_down(key int) bool {
+[inline] pub fn is_key_down(key int) bool {
 	return C.IsKeyDown(key)
 }
 
-pub fn is_key_pressed(key int)  bool {
+[inline] pub fn is_key_pressed(key int)  bool {
 	return C.IsKeyPressed(key)
 }
 
-pub fn is_key_released(key int) bool {
+[inline] pub fn is_key_released(key int) bool {
 	return C.IsKeyReleased(key)
 }
 
-pub fn is_key_up(key int) bool {
+[inline] pub fn is_key_up(key int) bool {
 	return C.IsKeyUp(key)
 }
 
-pub fn get_key_pressed() int {
+[inline] pub fn get_key_pressed() int {
 	return C.GetKeyPressed()
 }
 
-pub fn set_exit_key(key int) {
+[inline] pub fn set_exit_key(key int) {
 	C.SetExitKey(key)
 }
 
