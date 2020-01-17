@@ -87,7 +87,7 @@ pub mut:
 	a byte
 }
 
-pub fn (c Color) str() string {
+[inline] pub fn (c Color) str() string {
 	return "Color { r: $c.r, g: $c.g, b: $c.b, a: $c.a }"
 }
 
