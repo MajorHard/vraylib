@@ -1,12 +1,6 @@
 module vraylib
 
 // Timing-related functions
-//
-
-fn C.SetTargetFPS(fps int)
-fn C.GetFPS() int
-fn C.GetFrameTime() f32
-fn C.GetTime() f64
 
 // Set target FPS (maximum)
 pub fn set_target_fps(fps int) {

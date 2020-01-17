@@ -4,23 +4,6 @@ module vraylib
 ///  Module - Text
 /// --------------------------------------------
 
-fn C.GetFontDefault() C.Font
-fn C.LoadFont(fileName byteptr) C.Font
-fn C.LoadFontEx(fileName byteptr, fontSize, fontChars, charsCount int) C.Font
-fn C.LoadFontFromImage(image C.Image, key C.Color, firstChar int) C.Font
-fn C.LoadFontData(fileName byteptr, fontSize, fontChars, charsCount, @type int) C.CharInfo
-fn C.UnloadFont(font C.Font)
-
-fn C.DrawFPS(posX, posY int)
-fn C.DrawText(text byteptr, posX, posY, fontSize int, color C.Color)
-fn C.DrawTextEx(font C.Font, text byteptr, position C.Vector2, fontSize, spacing f32, tint C.Color)
-fn C.DrawTextRec(font C.Font, text byteptr, rec C.Rectangle, fontSize, spacing f32, wordWrap bool, tint C.Color)
-fn C.DrawTextRecEx(font C.Font, text byteptr, rec C.Rectangle, fontSize, spacing f32, wordWrap bool, tint C.Color, selectStart, selectLength int, selectText, selectBack C.Color)
-
-fn C.MeasureText(text byteptr, fontSize int) int
-fn C.MeasureTextEx(font C.Font, text byteptr, fontSize, spacing f32) C.Vector2
-fn C.GetGlyphIndex(font C.Font, character int) int
-
 // Get the default Font
 pub fn get_font_defauilt() Font {
 	return C.GetFontDefault()

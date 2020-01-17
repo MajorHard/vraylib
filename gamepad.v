@@ -1,16 +1,5 @@
 module vraylib
 
-fn C.IsGamepadAvailable(gamepad int) bool
-fn C.IsGamepadName(gamepad int, name byteptr) bool
-fn C.GetGamepadName(gamepad int) byteptr
-fn C.IsGamepadButtonPressed(gamepad, button int) bool
-fn C.IsGamepadButtonDown(gamepad, button int) bool
-fn C.IsGamepadButtonReleased(gamepad, button int) bool
-fn C.IsGamepadButtonUp(gamepad, button int) bool
-fn C.GetGamepadButtonPressed() int
-fn C.GetGamepadAxisCount(gamepad int) int
-fn C.GetGamepadAxisMovement(gamepad, axis int) f32
-
 enum GamepadPlayer {
 	player1 player2 player3 player4
 }

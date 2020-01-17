@@ -2,13 +2,6 @@ module vraylib
 
 // Input-related functions: key
 
-fn C.IsKeyPressed(key int) bool
-fn C.IsKeyDown(key int) bool
-fn C.IsKeyReleased(key int) bool
-fn C.IsKeyUp(key int) bool
-fn C.GetKeyPressed() int
-fn C.SetExitKey(key int)
-
 // Key Constants
 pub const(
     key_apostrophe      = 39

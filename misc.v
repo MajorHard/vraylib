@@ -1,27 +1,6 @@
 module vraylib
 
 // Screen-space-related functions
-//
-
-fn C.GetMouseRay(mousePosition C.Vector2, camera C.Camera3D) C.Ray
-fn C.GetWorldToScreen(position C.Vector3, camera C.Camera3D) C.Vector2
-fn C.GetCameraMatrix(camera C.Camera3D) C.Matrix
-
-fn C.SetConfigFlags(flags byte)
-fn C.SetTraceLogLevel(logType int)
-fn C.SetTraceLogExit(logType int)
-fn C.TraceLog(logType int, text byteptr)
-fn C.TakeScreenshot(fileName byteptr)
-fn C.GetRandomValue(min, max int) int
-
-fn C.FileExists(fileName byteptr) bool
-fn C.IsFileExtension(fileName, ext byteptr) bool
-fn C.GetExtension(fileName byteptr) byteptr
-fn C.GetFileName(filePath byteptr) byteptr
-fn C.GetDirectoryPath(fileName byteptr) byteptr
-fn C.GetWorkingDirectory() byteptr
-fn C.ChangeDirectory(dir byteptr) bool
-fn C.GetFileModTime(fileName byteptr) i64
 
 // Returns a ray trace from mouse position
 pub fn get_mouse_ray(mousePosition Vector2, camera Camera3D) Ray {
