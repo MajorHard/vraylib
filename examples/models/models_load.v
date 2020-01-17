@@ -1,5 +1,6 @@
 module main
 
+import os
 import MajorHard.vraylib
 
 const (
@@ -13,8 +14,8 @@ fn main() {
 	defer { vraylib.close_window() }
 	vraylib.set_target_fps(60)
 
-	mut suzanne := vraylib.load_model("resources/Suzanne.gltf")
-	suzanne_albeido := vraylib.load_texture("resources/Suzanne_BaseColor.png")
+	mut suzanne := vraylib.load_model(os.resource_abs_path("resources/Suzanne.gltf"))
+	suzanne_albeido := vraylib.load_texture(os.resource_abs_path("resources/Suzanne_BaseColor.png"))
 	base_materials := suzanne.materials[0].maps[vraylib.diffuse]
 	suzanne.materials[0].maps[vraylib.diffuse] = MaterialMap{
 		texture: suzanne_albeido,
