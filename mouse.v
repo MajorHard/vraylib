@@ -2,18 +2,6 @@ module vraylib
 
 // Input-related functions: mouse
 
-fn C.IsMouseButtonPressed(button int) bool
-fn C.IsMouseButtonDown(button int) bool
-fn C.IsMouseButtonReleased(button int) bool
-fn C.IsMouseButtonUp(button int) bool
-fn C.GetMouseX() int
-fn C.GetMouseY() int
-fn C.GetMousePosition() C.Vector2
-fn C.SetMousePosition(x, y int)
-fn C.SetMouseOffset(offsetX, offsetY int)
-fn C.SetMouseScale(scaleX, scaleY f32)
-fn C.GetMouseWheelMove() int
-
 pub const (
 	mouse_left_button = 0
 	mouse_right_button = 1

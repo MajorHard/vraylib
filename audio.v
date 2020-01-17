@@ -1,56 +1,5 @@
 module vraylib
 
-fn C.InitAudioDevice()
-fn C.CloseAudioDevice()
-fn C.IsAudioDeviceReady() bool
-fn C.SetMasterVolume(volume f32)
-
-fn C.LoadWave(fileName byteptr) C.Wave
-fn C.LoadSound(fileName byteptr) C.Sound
-fn C.LoadSoundFromWave(wave C.Wave) C.Sound
-fn C.UpdateSound(sound C.Sound, data voidptr, samplesCount int)
-fn C.UnloadWave(wave C.Wave)
-fn C.UnloadSound(sound C.Sound)
-fn C.ExportWave(wave C.Wave, fileName byteptr)
-fn C.ExportWaveAsCode(wave C.Wave, fileName byteptr)
-
-fn C.PlaySound(sound C.Sound)
-fn C.PauseSound(sound C.Sound)
-fn C.ResumeSound(sound C.Sound)
-fn C.StopSound(sound C.Sound)
-fn C.IsSoundPlaying(sound C.Sound) bool
-fn C.SetSoundVolume(sound C.Sound, volume f32)
-fn C.SetSoundPitch(sound C.Sound, pitch f32)
-fn C.WaveFormat(wave C.Wave, sampleRate, sampleSize, channels int)
-fn C.WaveCopy(wave C.Wave) C.Wave
-fn C.WaveCrop(wave C.Wave, initSample, finalSample int)
-fn C.GetWaveData(wave C.Wave) f32
-
-fn C.LoadMusicStream(fileName byteptr) C.Music
-fn C.UnloadMusicStream(music C.Music)
-fn C.PlayMusicStream(music C.Music)
-fn C.UpdateMusicStream(music C.Music)
-fn C.StopMusicStream(music C.Music)
-fn C.PauseMusicStream(music C.Music)
-fn C.ResumeMusicStream(music C.Music)
-fn C.IsMusicPlaying(music C.Music) bool
-fn C.SetMusicVolume(music C.Music, volume f32)
-fn C.SetMusicPitch(music C.Music, pitch f32)
-fn C.SetMusicLoopCount(music C.Music, count int)
-fn C.GetMusicTimeLength(music C.Music) f32
-fn C.GetMusicTimePlayed(music C.Music) f32
-
-fn C.InitAudioStream(sampleRate, sampleSize, channels u32) C.AudioStream
-fn C.UpdateAudioStream(stream C.AudioStream, data voidptr, samplesCount int)
-fn C.CloseAudioStream(stream C.AudioStream)
-fn C.PlayAudioStream(stream C.AudioStream)
-fn C.PauseAudioStream(stream C.AudioStream)
-fn C.ResumeAudioStream(stream C.AudioStream)
-fn C.IsAudioStreamPlaying(stream C.AudioStream) bool
-fn C.StopAudioStream(stream C.AudioStream)
-fn C.SetAudioStreamVolume(stream C.AudioStream, volume f32)
-fn C.SetAudioStreamPitch(stream C.AudioStream, pitch f32)
-
 // Wave type, defines audio wave data
 pub struct C.Wave {
 pub mut:

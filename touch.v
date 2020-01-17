@@ -2,10 +2,6 @@ module vraylib
 
 // Input-related functions: touch
 
-fn C.GetTouchX() int
-fn C.GetTouchY() int
-fn C.GetTouchPosition(index int) C.Vector2
-
 // Returns touch position X for touch point 0 (relative to screen size)
 pub fn get_touch_x() int {
 	return C.GetTouchX()

@@ -1,37 +1,5 @@
 module vraylib
 
-fn C.LoadShader(vsFileName, fsFileName byteptr) C.Shader
-fn C.LoadShaderCode(vsCode, fsCode byteptr) C.Shader
-fn C.UnloadShader(shader C.Shader)
-
-fn C.GetShaderDefault() C.Shader
-fn C.GetTextureDefault() C.Texture2D
-
-fn C.GetShaderLocation(shader C.Shader, uniformName byteptr) int
-fn C.SetShaderValue(shader C.Shader, uniformLoc int, value voidptr, uniformType int)
-fn C.SetShaderValueV(shader C.Shader, uniformLoc int, value voidptr, uniformType, count int)
-fn C.SetShaderValueMatrix(shader C.Shader, uniformLoc int, mat C.Matrix)
-fn C.SetShaderValueTexture(shader C.Shader, uniformLoc int, texture C.Texture2D)
-fn C.SetMatrixProjection(proj C.Matrix)
-fn C.SetMatrixModelview(view C.Matrix)
-fn C.GetMatrixModelview() C.Matrix
-
-fn C.BeginShaderMode(shader C.Shader)
-fn C.EndShaderMode()
-fn C.BeginBlendMode(mode int)
-fn C.EndBlendMode()
-fn C.BeginScissorMode(x, y, width, height int)
-fn C.EndScissorMode()
-
-fn C.InitVrSimulator()
-fn C.CloseVrSimulator()
-fn C.UpdateVrTracking(camera C.Camera3D)
-fn C.SetVrConfiguration(info C.VrDeviceInfo, distortion C.Shader)
-fn C.IsVrSimulatorReady() bool
-fn C.ToggleVrMode()
-fn C.BeginVrDrawing()
-fn C.EndVrDrawing()
-
 pub struct C.Shader {
 pub mut:
 	id u32
