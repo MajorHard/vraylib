@@ -1,4 +1,4 @@
-# V Wrapper for the Raylib C framework, version 2.5.0
+# V Wrapper for the Raylib C framework, version 3.5.0
 
 ## Dev Notes
 
