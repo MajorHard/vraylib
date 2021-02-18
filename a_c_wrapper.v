@@ -7,7 +7,6 @@ pub mut:
 	x f32
 	y f32
 }
-
 type Vector2 = C.Vector2
 
 pub struct C.Vector3 {
@@ -26,8 +25,7 @@ pub mut:
 	z f32
 	w f32
 }
-
-pub type Vector4 = C.Vector4
+type Vector4 = C.Vector4
 
 type Quaternion = C.Vector4
 
@@ -50,8 +48,7 @@ pub mut:
 	m14 f32
 	m15 f32
 }
-
-pub type Matrix = C.Matrix
+type Matrix = C.Matrix
 
 pub struct C.Image {
 pub mut:
@@ -61,8 +58,7 @@ pub mut:
 	mipmaps int
 	format  int
 }
-
-pub type Image = C.Image
+type Image = C.Image
 
 pub struct C.Rectangle {
 pub mut:
@@ -71,8 +67,7 @@ pub mut:
 	width  f32
 	height f32
 }
-
-pub type Rectangle = C.Rectangle
+type Rectangle = C.Rectangle
 
 [typedef]
 pub struct C.Texture2D {
@@ -83,11 +78,8 @@ pub mut:
 	mipmaps int
 	format  int
 }
-
 type Texture2D = C.Texture2D
-
 type Texture = C.Texture2D
-
 type TextureCubemap = C.Texture2D
 
 [typedef]
@@ -105,7 +97,6 @@ pub mut:
 	b byte
 	a byte
 }
-
 pub type Color = C.Color
 
 [inline]
@@ -121,8 +112,7 @@ pub mut:
 	advance_x int
 	image     Image
 }
-
-pub type CharInfo = C.CharInfo
+type CharInfo = C.CharInfo
 
 pub struct C.Font {
 pub mut:
@@ -132,7 +122,6 @@ pub mut:
 	recs        &Rectangle
 	chars       &CharInfo
 }
-
 type Font = C.Font
 
 pub struct C.Camera2D {
@@ -153,9 +142,7 @@ pub mut:
 	fovy     f32
 	@type    int
 }
-
 type Camera3D = C.Camera3D
-
 type Camera = C.Camera3D
 
 // Ray type (useful for raycast)
@@ -163,7 +150,6 @@ pub struct C.Ray {
 	position  Vector3
 	direction Vector3
 }
-
 type Ray = C.Ray
 
 pub struct C.RayHitInfo {
@@ -172,14 +158,12 @@ pub struct C.RayHitInfo {
 	position Vector3
 	normal   Vector3
 }
-
 type RayHitInfo = C.RayHitInfo
 
 pub struct C.BoundingBox {
 	min Vector3
 	max Vector3
 }
-
 type BoundingBox = C.BoundingBox
 
 // N-Patch layout info
@@ -191,5 +175,4 @@ pub struct C.NPatchInfo {
 	bottom     int
 	@type      int
 }
-
 type PRectangle = &C.Rectangle
