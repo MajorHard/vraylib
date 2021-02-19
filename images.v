@@ -79,7 +79,6 @@ pub fn image_dither(image &Image, rBpp int, gBpp int, bBpp int, aBpp int) {
 	C.ImageDither(image, rBpp, gBpp, bBpp, aBpp)
 }
 
-
 // Create an image from text (default font)
 [inline]
 pub fn image_text(text string, fontSize int, color Color) Image {

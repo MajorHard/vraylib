@@ -25,8 +25,6 @@ pub fn set_config_flags(flags u32) {
 	C.SetConfigFlags(flags)
 }
 
-
-
 [inline]
 pub fn trace_log(logType int, text string) {
 	C.TraceLog(logType, text.str)
