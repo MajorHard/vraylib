@@ -3,16 +3,16 @@ module main
 import MajorHard.vraylib
 
 const (
-	screenWidth = 800
-	screenHeight = 450
+	screen_width = 800
+	screen_height = 450
 )
 
 
 fn main() {
-	vraylib.init_window(screenWidth, screenHeight, "vraylib [core] example - keyboard input")
+	vraylib.init_window(screen_width, screen_height, "vraylib [core] example - keyboard input")
 	defer { vraylib.close_window() }
 
-	mut ball_position := Vector2{ x: screenWidth / 2, y: screenHeight / 2 }
+	mut ball_position := Vector2{ x: screen_width / 2, y: screen_height / 2 }
 
 	vraylib.set_target_fps(60)
 

@@ -3,14 +3,14 @@ module main
 import MajorHard.vraylib
 
 const (
-	screenWidth = 800
-	screenHeight = 450
-	maxBuildings = 100
+	screen_width = 800
+	screen_height = 450
+	max_buildings = 100
 )
 
 
 fn main() {
-	vraylib.init_window(screenWidth, screenHeight, "vraylib [core] example - 2d camera")
+	vraylib.init_window(screen_width, screen_height, "vraylib [core] example - 2d camera")
 	defer { vraylib.close_window() }
 	vraylib.set_target_fps(60)
 
@@ -21,12 +21,12 @@ fn main() {
 	mut spacing := 0
 
 
-	for i := 0; i < maxBuildings; i++ {
+	for i := 0; i < max_buildings; i++ {
 		width := vraylib.get_random_value(50, 200)
 		height := vraylib.get_random_value(100, 800)
 		buildings << Rectangle{
 			x: -6000 + spacing,
-			y: screenHeight - 130 - height,
+			y: screen_height - 130 - height,
 			width: width,
 			height: height
 		}
@@ -40,7 +40,7 @@ fn main() {
 	}
 	mut camera := Camera2D{
 		target: Vector2{ x: player.x + 20, y: player.y + 20 },
-		offset: Vector2{ x: screenWidth / 2, y: screenHeight / 2 },
+		offset: Vector2{ x: screen_width / 2, y: screen_height / 2 },
 		rotation: 0,
 		zoom: 1
 	}
@@ -93,15 +93,15 @@ fn main() {
 				}
 				vraylib.draw_rectangle(-6000, 320, 13000, 8000, vraylib.darkgray)
 				vraylib.draw_rectangle_rec(player, vraylib.red)
-				vraylib.draw_line(int(camera.target.x), -screenHeight*10, int(camera.target.x), screenHeight*10, vraylib.green)
-				vraylib.draw_line(-screenWidth*10, int(camera.target.y), screenWidth*10, int(camera.target.y), vraylib.green)
+				vraylib.draw_line(int(camera.target.x), -screen_height*10, int(camera.target.x), screen_height*10, vraylib.green)
+				vraylib.draw_line(-screen_width*10, int(camera.target.y), screen_width*10, int(camera.target.y), vraylib.green)
 			}
 
 			vraylib.draw_text("SCREEN AREA", 640, 10, 20, vraylib.red)
-			vraylib.draw_rectangle(0, 0, screenWidth, 5, vraylib.red)
-			vraylib.draw_rectangle(0, 5, 5, screenHeight - 10, vraylib.red)
-			vraylib.draw_rectangle(screenWidth -5, 5, 5, screenHeight - 10, vraylib.red)
-			vraylib.draw_rectangle(0, screenHeight - 5, screenWidth, 5, vraylib.red)
+			vraylib.draw_rectangle(0, 0, screen_width, 5, vraylib.red)
+			vraylib.draw_rectangle(0, 5, 5, screen_height - 10, vraylib.red)
+			vraylib.draw_rectangle(screen_width -5, 5, 5, screen_height - 10, vraylib.red)
+			vraylib.draw_rectangle(0, screen_height - 5, screen_width, 5, vraylib.red)
 
 			vraylib.draw_rectangle(10, 10, 250, 113, vraylib.fade(vraylib.skyblue, 0.5))
 			vraylib.draw_rectangle_lines(10, 10, 250, 113, vraylib.blue)

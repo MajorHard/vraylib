@@ -4,13 +4,13 @@ import os
 import MajorHard.vraylib
 
 const (
-	screenWidth = 800
-	screenHeight = 450
+	screen_width = 800
+	screen_height = 450
 )
 
 
 fn main() {
-	vraylib.init_window(screenWidth, screenHeight, "vraylib [core] example - basic window")
+	vraylib.init_window(screen_width, screen_height, "vraylib [core] example - basic window")
 	defer { vraylib.close_window() }
 	vraylib.set_target_fps(60)
 

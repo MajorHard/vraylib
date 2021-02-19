@@ -361,6 +361,8 @@ fn C.SetExitKey(c_key int)
 // C.GetKeyPressed - Get key pressed, call it multiple times for chars queued
 fn C.GetKeyPressed() int
 
+fn C.GetCharPressed() int
+
 // C Original: RLAPI bool IsGamepadAvailable(int gamepad);                   // Detect if a gamepad is available
 // C.IsGamepadAvailable - Detect if a gamepad is available
 fn C.IsGamepadAvailable(c_gamepad int) bool

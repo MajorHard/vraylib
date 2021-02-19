@@ -143,6 +143,11 @@ pub fn get_key_pressed() int {
 }
 
 [inline]
+pub fn get_char_pressed() int {
+	return C.GetCharPressed()
+}
+
+[inline]
 pub fn set_exit_key(key int) {
 	C.SetExitKey(key)
 }

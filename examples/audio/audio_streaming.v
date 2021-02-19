@@ -4,8 +4,8 @@ import os
 import MajorHard.vraylib
 
 const (
-	screenWidth = 800
-	screenHeight = 450
+	screen_width = 800
+	screen_height = 450
 	maxCircles = 64
 )
 
@@ -21,7 +21,7 @@ pub mut:
 
 
 fn main() {
-	vraylib.init_window(screenWidth, screenHeight, "vraylib [audio] example - module playing (streaming)")
+	vraylib.init_window(screen_width, screen_height, "vraylib [audio] example - module playing (streaming)")
 	defer { vraylib.close_window() }
 	vraylib.init_audio_device()
 	defer { vraylib.close_audio_device() }
@@ -49,8 +49,8 @@ fn main() {
 	for i := 0; i <= 40; i++ {
 		circles[i].alpha = 0.0
 		circles[i].radius = vraylib.get_random_value(10, 40)
-		circles[i].position.x = vraylib.get_random_value(int(circles[i].radius), screenWidth - int(circles[i].radius))
-		circles[i].position.y = vraylib.get_random_value(int(circles[i].radius), screenHeight - int(circles[i].radius))
+		circles[i].position.x = vraylib.get_random_value(int(circles[i].radius), screen_width - int(circles[i].radius))
+		circles[i].position.y = vraylib.get_random_value(int(circles[i].radius), screen_height - int(circles[i].radius))
 		circles[i].speed = f32(vraylib.get_random_value(1, 100))/2000.0
 		circles[i].color = colors[vraylib.get_random_value(0, 13)]
 	}
@@ -75,7 +75,7 @@ fn main() {
 				vraylib.resume_music_stream(music)
 			}
 		}
-		time_played = vraylib.get_music_time_played(music) / vraylib.get_music_time_length(music) * (screenWidth - 40)
+		time_played = vraylib.get_music_time_played(music) / vraylib.get_music_time_length(music) * (screen_width - 40)
 		for i := 39; i >= 0; i-- {
 			circles[i].alpha += circles[i].speed
 			circles[i].radius += circles[i].speed*10.0
@@ -87,8 +87,8 @@ fn main() {
 			if circles[i].alpha <= 0 {
 				circles[i].alpha = 0.0
 				circles[i].radius = vraylib.get_random_value(10, 40)
-				circles[i].position.x = vraylib.get_random_value(int(circles[i].radius), screenWidth - int(circles[i].radius))
-				circles[i].position.y = vraylib.get_random_value(int(circles[i].radius), screenHeight - int(circles[i].radius))
+				circles[i].position.x = vraylib.get_random_value(int(circles[i].radius), screen_width - int(circles[i].radius))
+				circles[i].position.y = vraylib.get_random_value(int(circles[i].radius), screen_height - int(circles[i].radius))
 				circles[i].speed = f32(vraylib.get_random_value(1, 100))/2000.0
 				circles[i].color = colors[vraylib.get_random_value(0, 13)]
 			}
@@ -105,9 +105,9 @@ fn main() {
 				vraylib.draw_circle_v(circles[i].position, circles[i].radius, vraylib.fade(circles[i].color, circles[i].alpha))
 			}
 
-			vraylib.draw_rectangle(20, screenHeight - 20 -12, screenWidth - 40, 12, vraylib.lightgray)
-			vraylib.draw_rectangle(20, screenHeight - 20 - 12, int(time_played), 12, vraylib.maroon)
-			vraylib.draw_rectangle_lines(20, screenHeight - 20 - 12, screenWidth - 40, 12, vraylib.gray)
+			vraylib.draw_rectangle(20, screen_height - 20 -12, screen_width - 40, 12, vraylib.lightgray)
+			vraylib.draw_rectangle(20, screen_height - 20 - 12, int(time_played), 12, vraylib.maroon)
+			vraylib.draw_rectangle_lines(20, screen_height - 20 - 12, screen_width - 40, 12, vraylib.gray)
 
 			vraylib.clear_background(vraylib.raywhite)
 		}

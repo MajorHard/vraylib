@@ -3,13 +3,13 @@ module main
 import MajorHard.vraylib
 
 const (
-	screenWidth = 800
-	screenHeight = 450
+	screen_width = 800
+	screen_height = 450
 )
 
 
 fn main() {
-	vraylib.init_window(screenWidth, screenHeight, "vraylib [core] example - mouse input")
+	vraylib.init_window(screen_width, screen_height, "vraylib [core] example - mouse input")
 	defer { vraylib.close_window() }
 
 	mut ball_position := Vector2{ x: -100, y: -100 }
