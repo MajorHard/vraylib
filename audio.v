@@ -136,6 +136,17 @@ pub fn stop_sound(sound C.Sound) {
 	C.StopSound(sound)
 }
 
+[inline]
+pub fn play_sound_multi(sound C.Sound) {
+	C.PlaySoundMulti(sound)
+}
+
+// Stop playing a sound
+[inline]
+pub fn stop_sound_multi() {
+	C.StopSoundMulti()
+}
+
 // Check if a sound is currently playing
 [inline]
 pub fn is_sound_playing(sound C.Sound) bool {
