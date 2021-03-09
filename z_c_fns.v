@@ -24,6 +24,18 @@ fn C.IsWindowMinimized() bool
 // C.IsWindowResized - Check if window has been resized
 fn C.IsWindowResized() bool
 
+// RLAPI bool IsWindowState(unsigned int flag);
+// Check if one specific window flag is enabled
+fn C.IsWindowState(int) bool
+
+// RLAPI void SetWindowState(unsigned int flags);
+// Set window configuration state using flags
+fn C.SetWindowState(int)
+
+// RLAPI void ClearWindowState(unsigned int flags);
+// Clear window configuration state flags
+fn C.ClearWindowState(int)
+
 // C Original: RLAPI bool IsWindowHidden(void);                                  // Check if window is currently hidden
 // C.IsWindowHidden - Check if window is currently hidden
 fn C.IsWindowHidden() bool
