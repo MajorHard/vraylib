@@ -1,21 +1,20 @@
 module vraylib
 
 pub const (
-    flag_vsync_hint         = 0x00000040   // set to try enabling v-sync on gpu
-    flag_fullscreen_mode    = 0x00000002   // set to run program in fullscreen
-    flag_window_resizable   = 0x00000004   // set to allow resizable window
-    flag_window_undecorated = 0x00000008   // set to disable window decoration (frame and buttons)
-    flag_window_hidden      = 0x00000080   // set to hide window
-    flag_window_minimized   = 0x00000200   // set to minimize window (iconify)
-    flag_window_maximized   = 0x00000400   // set to maximize window (expanded to monitor)
-    flag_window_unfocused   = 0x00000800   // set to window non focused
-    flag_window_topmost     = 0x00001000   // set to window always on top
-    flag_window_always_run  = 0x00000100   // set to allow windows running while minimized
-    flag_window_transparent = 0x00000010   // set to allow transparent framebuffer
-    flag_window_highdpi     = 0x00002000   // set to support highdpi
-    flag_msaa_4x_hint       = 0x00000020   // set to try enabling msaa 4x
-    flag_interlaced_hint    = 0x00010000    // set to try enabling interlaced video format (for v3d)
-
+	flag_vsync_hint         = 0x00000040 // set to try enabling v-sync on gpu
+	flag_fullscreen_mode    = 0x00000002 // set to run program in fullscreen
+	flag_window_resizable   = 0x00000004 // set to allow resizable window
+	flag_window_undecorated = 0x00000008 // set to disable window decoration (frame and buttons)
+	flag_window_hidden      = 0x00000080 // set to hide window
+	flag_window_minimized   = 0x00000200 // set to minimize window (iconify)
+	flag_window_maximized   = 0x00000400 // set to maximize window (expanded to monitor)
+	flag_window_unfocused   = 0x00000800 // set to window non focused
+	flag_window_topmost     = 0x00001000 // set to window always on top
+	flag_window_always_run  = 0x00000100 // set to allow windows running while minimized
+	flag_window_transparent = 0x00000010 // set to allow transparent framebuffer
+	flag_window_highdpi     = 0x00002000 // set to support highdpi
+	flag_msaa_4x_hint       = 0x00000020 // set to try enabling msaa 4x
+	flag_interlaced_hint    = 0x00010000 // set to try enabling interlaced video format (for v3d)
 )
 
 // Window-Related Functions
@@ -69,7 +68,6 @@ pub fn set_window_state(flag int) {
 pub fn clear_window_state(flag int) {
 	C.ClearWindowState(flag)
 }
-
 
 // Check if window is currently hidden
 [inline]
