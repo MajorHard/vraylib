@@ -18,13 +18,13 @@ pub const (
 
 // Set camera mode (multiple camera modes available)
 [inline]
-pub fn set_camera_mode(camera Camera3D, mode int) {
+pub fn set_camera_mode(camera C.Camera, mode int) {
 	C.SetCameraMode(camera, mode)
 }
 
 // Update camera position for selected mode
 [inline]
-pub fn update_camera(camera &Camera3D) {
+pub fn update_camera(camera &C.Camera) {
 	C.UpdateCamera(camera)
 }
 

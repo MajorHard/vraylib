@@ -176,7 +176,7 @@ pub fn close_vr_simulator() {
 
 // Update VR tracking (position and orientation) and camera
 [inline]
-pub fn update_vr_tracking(camera &Camera3D) {
+pub fn update_vr_tracking(camera &C.Camera) {
 	C.UpdateVrTracking(camera)
 }
 

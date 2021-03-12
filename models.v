@@ -36,7 +36,7 @@ pub mut:
 pub struct C.Material {
 pub mut:
 	shader C.Shader
-	maps   MaterialMap
+	maps   C.MaterialMap
 	params &f32
 }
 
@@ -69,8 +69,8 @@ pub mut:
 	materials     &Material
 	meshMaterial  &int
 	boneCount     int
-	bones         &BoneInfo
-	bindPose      &Transform
+	bones         &C.BoneInfo
+	bindPose      &C.Transform
 }
 
 type Model = C.Model
@@ -79,9 +79,9 @@ type Model = C.Model
 pub struct C.ModelAnimation {
 pub mut:
 	boneCount  int
-	bones      &BoneInfo
+	bones      &C.BoneInfo
 	fameCount  int
-	framePoses &Transform
+	framePoses &C.Transform
 }
 
 type ModelAnimation = C.ModelAnimation
@@ -395,13 +395,13 @@ pub fn draw_bounding_box(box BoundingBox, color Color) {
 
 // Draw a billboard texture
 [inline]
-pub fn draw_billboard(camera Camera3D, texture C.Texture2D, center Vector3, size f32, tint Color) {
+pub fn draw_billboard(camera C.Camera, texture C.Texture2D, center Vector3, size f32, tint Color) {
 	C.DrawBillboard(camera, texture, center, size, tint)
 }
 
 // Draw a billboard texture defined by sourceRec
 [inline]
-pub fn draw_billboard_rec(camera Camera3D, texture C.Texture2D, sourceRec Rectangle, center Vector3, size f32, tint Color) {
+pub fn draw_billboard_rec(camera C.Camera, texture C.Texture2D, sourceRec Rectangle, center Vector3, size f32, tint Color) {
 	C.DrawBillboardRec(camera, texture, sourceRec, center, size, tint)
 }
 

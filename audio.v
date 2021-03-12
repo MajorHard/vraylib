@@ -16,7 +16,7 @@ pub mut:
 	sampleRate u32
 	sampleSize u32
 	channels   u32
-	buffer     rAudioBuffer
+	buffer     C.rAudioBuffer
 }
 
 pub struct C.Sound {

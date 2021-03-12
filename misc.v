@@ -3,19 +3,19 @@ module vraylib
 // Screen-space-related functions
 // Returns a ray trace from mouse position
 [inline]
-pub fn get_mouse_ray(mousePosition Vector2, camera Camera3D) Ray {
+pub fn get_mouse_ray(mousePosition Vector2, camera C.Camera) Ray {
 	return C.GetMouseRay(mousePosition, camera)
 }
 
 // Returns the screen space position for a 3d world space position
 [inline]
-pub fn get_world_to_screen(position Vector3, camera Camera3D) Vector2 {
+pub fn get_world_to_screen(position Vector3, camera C.Camera) Vector2 {
 	return C.GetWorldToScreen(position, camera)
 }
 
 // Returns camera transform matrix (view matrix)
 [inline]
-pub fn get_camera_matrix(camera Camera3D) Matrix {
+pub fn get_camera_matrix(camera C.Camera) Matrix {
 	return C.GetCameraMatrix(camera)
 }
 

@@ -238,7 +238,7 @@ fn C.ColorToHSV(c_color C.Color) C.Vector3
 
 // C Original: RLAPI Color ColorFromHSV(Vector3 hsv);                            // Returns a Color from HSV values
 // C.ColorFromHSV - Returns a Color from HSV values
-fn C.ColorFromHSV(c_hsv C.Vector3) C.Color
+fn C.ColorFromHSV(hue f32, saturation f32, value f32) C.Color
 
 // C Original: RLAPI Color GetColor(int hexValue);                               // Returns a Color struct from hexadecimal value
 // C.GetColor - Returns a Color struct from hexadecimal value
@@ -829,7 +829,7 @@ fn C.ImageDraw(c_dst &C.Image, c_src C.Image, c_srcRec C.Rectangle, c_dstRec C.R
 
 // C Original: RLAPI void ImageDrawRectangle(Image *dst, Rectangle rec, Color color);                                   // Draw rectangle within an image
 // C.ImageDrawRectangle - Draw rectangle within an image
-fn C.ImageDrawRectangle(c_dst &C.Image, c_pos_x C.Color, c_pos_y C.Color, c_width C.Color, c_height C.Color, c_color C.Color)
+fn C.ImageDrawRectangle(c_dst &C.Image, c_pos_x int, c_pos_y int, c_width int, c_height int, c_color C.Color)
 
 // C Original: RLAPI void ImageDrawRectangleLines(Image *dst, Rectangle rec, int thick, Color color);                   // Draw rectangle lines within an image
 // C.ImageDrawRectangleLines - Draw rectangle lines within an image
