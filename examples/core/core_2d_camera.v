@@ -1,6 +1,7 @@
 module main
 
 import MajorHard.vraylib
+import rand
 
 const (
 	screen_width = 800
@@ -22,8 +23,8 @@ fn main() {
 
 
 	for i := 0; i < max_buildings; i++ {
-		width := vraylib.get_random_value(50, 200)
-		height := vraylib.get_random_value(100, 800)
+		width := rand.int_in_range(50, 200)
+		height := rand.int_in_range(100, 800)
 		buildings << Rectangle{
 			x: -6000 + spacing,
 			y: screen_height - 130 - height,
@@ -31,9 +32,9 @@ fn main() {
 			height: height
 		}
 		building_colors << Color{
-			r: vraylib.get_random_value(200, 240),
-			g: vraylib.get_random_value(200, 240),
-			b: vraylib.get_random_value(200, 250),
+			r: rand.int_in_range(200, 240),
+			g: rand.int_in_range(200, 240),
+			b: rand.int_in_range(200, 250),
 			a: 255
 		}
 		spacing += width

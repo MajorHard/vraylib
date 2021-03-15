@@ -2,6 +2,7 @@ module main
 
 import os
 import MajorHard.vraylib
+import rand
 
 const (
 	screen_width = 800
@@ -48,11 +49,11 @@ fn main() {
 
 	for i := 0; i <= 40; i++ {
 		circles[i].alpha = 0.0
-		circles[i].radius = vraylib.get_random_value(10, 40)
-		circles[i].position.x = vraylib.get_random_value(int(circles[i].radius), screen_width - int(circles[i].radius))
-		circles[i].position.y = vraylib.get_random_value(int(circles[i].radius), screen_height - int(circles[i].radius))
-		circles[i].speed = f32(vraylib.get_random_value(1, 100))/2000.0
-		circles[i].color = colors[vraylib.get_random_value(0, 13)]
+		circles[i].radius = rand.int_in_range(10, 40)
+		circles[i].position.x = rand.int_in_range(int(circles[i].radius), screen_width - int(circles[i].radius))
+		circles[i].position.y = rand.int_in_range(int(circles[i].radius), screen_height - int(circles[i].radius))
+		circles[i].speed = f32(rand.int_in_range(1, 100))/2000.0
+		circles[i].color = colors[rand.int_in_range(0, 13)]
 	}
 
 	music := vraylib.load_music_stream(os.resource_abs_path("resources/mini1111.xm"))
@@ -86,11 +87,11 @@ fn main() {
 
 			if circles[i].alpha <= 0 {
 				circles[i].alpha = 0.0
-				circles[i].radius = vraylib.get_random_value(10, 40)
-				circles[i].position.x = vraylib.get_random_value(int(circles[i].radius), screen_width - int(circles[i].radius))
-				circles[i].position.y = vraylib.get_random_value(int(circles[i].radius), screen_height - int(circles[i].radius))
-				circles[i].speed = f32(vraylib.get_random_value(1, 100))/2000.0
-				circles[i].color = colors[vraylib.get_random_value(0, 13)]
+				circles[i].radius = rand.int_in_range(10, 40)
+				circles[i].position.x = rand.int_in_range(int(circles[i].radius), screen_width - int(circles[i].radius))
+				circles[i].position.y = rand.int_in_range(int(circles[i].radius), screen_height - int(circles[i].radius))
+				circles[i].speed = f32(rand.int_in_range(1, 100))/2000.0
+				circles[i].color = colors[rand.int_in_range(0, 13)]
 			}
 
 
