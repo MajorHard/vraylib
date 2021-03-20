@@ -455,6 +455,12 @@ fn C.SetMouseOffset(c_offsetX int, c_offsetY int)
 // C.SetMouseScale - Set mouse scaling
 fn C.SetMouseScale(c_scaleX f32, c_scaleY f32)
 
+
+// RLAPI void SetMouseCursor(int cursor);
+// Set mouse cursor
+fn C.SetMouseCursor(cursor int)
+
+
 // C Original: RLAPI int GetMouseWheelMove(void);                            // Returns mouse wheel movement Y
 // C.GetMouseWheelMove - Returns mouse wheel movement Y
 fn C.GetMouseWheelMove() int

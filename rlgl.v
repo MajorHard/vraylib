@@ -151,7 +151,7 @@ pub fn end_blend_mode() {
 // Begin scissor mode (define screen area for following drawing)
 [inline]
 pub fn begin_scissor_mode(x int, y int, width int, height int) {
-	C.BeginScissorMode(x, y, width, height)
+	C.BeginScissorMode(x, y, width, vraylib.height)
 }
 
 // End scissor mode

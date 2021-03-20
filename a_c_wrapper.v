@@ -2,6 +2,7 @@ module vraylib
 
 #flag linux -lraylib -lGL -lm -lpthread -ldl -lrt -lX11
 #include "raylib.h"
+
 pub struct C.Vector2 {
 pub mut:
 	x f32

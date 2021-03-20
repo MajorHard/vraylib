@@ -7,6 +7,21 @@ pub const (
 	mouse_middle_button = 2
 )
 
+pub const (
+    mouse_cursor_default       = 0
+    mouse_cursor_arrow         = 1
+    mouse_cursor_ibeam         = 2
+    mouse_cursor_crosshair     = 3
+		mouse_cursor_pointing_hand = 4
+		mouse_cursor_hand = 4
+    mouse_cursor_resize_ew     = 5     // the horizontal resize/move arrow shape
+    mouse_cursor_resize_ns     = 6     // the vertical resize/move arrow shape
+    mouse_cursor_resize_nwse   = 7     // the top-left to bottom-right diagonal resize/move arrow shape
+    mouse_cursor_resize_nesw   = 8     // the top-right to bottom-left diagonal resize/move arrow shape
+    mouse_cursor_resize_all    = 9     // the omni-directional resize/move cursor shape
+    mouse_cursor_not_allowed   = 10     // the operation-not-allowed shape
+)
+
 [inline]
 pub fn is_mouse_button_pressed(button int) bool {
 	return C.IsMouseButtonPressed(button)
@@ -55,6 +70,11 @@ pub fn set_mouse_offset(offsetX int, offsetY int) {
 [inline]
 pub fn set_mouse_scale(scaleX f32, scaleY f32) {
 	C.SetMouseScale(scaleX, scaleY)
+}
+
+[inline]
+pub fn set_mouse_cursor(cursor int) {
+	C.SetMouseCursor(cursor)
 }
 
 [inline]
