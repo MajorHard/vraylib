@@ -2,7 +2,7 @@ module vraylib
 
 // C Original: RLAPI void InitWindow(int width, int height, const char *title);  // Initialize window and OpenGL context
 // C.InitWindow - Initialize window and OpenGL context
-fn C.InitWindow(c_width int, c_height int, c_title charptr)
+fn C.InitWindow(c_width int, c_height int, c_title &char)
 
 // C Original: RLAPI bool WindowShouldClose(void);                               // Check if KEY_ESCAPE pressed or Close icon pressed
 // C.WindowShouldClose - Check if KEY_ESCAPE pressed or Close icon pressed
@@ -50,7 +50,7 @@ fn C.SetWindowIcon(c_image C.Image)
 
 // C Original: RLAPI void SetWindowTitle(const char *title);                     // Set title for window (only PLATFORM_DESKTOP)
 // C.SetWindowTitle - Set title for window (only PLATFORM_DESKTOP)
-fn C.SetWindowTitle(c_title charptr)
+fn C.SetWindowTitle(c_title &char)
 
 // C Original: RLAPI void SetWindowPosition(int x, int y);                       // Set window position on screen (only PLATFORM_DESKTOP)
 // C.SetWindowPosition - Set window position on screen (only PLATFORM_DESKTOP)
@@ -106,15 +106,15 @@ fn C.GetWindowPosition() C.Vector2
 
 // C Original: RLAPI const char *GetMonitorName(int monitor);                    // Get the human-readable, UTF-8 encoded name of the primary monitor
 // C.GetMonitorName - Get the human-readable, UTF-8 encoded name of the primary monitor
-fn C.GetMonitorName(c_monitor int) charptr
+fn C.GetMonitorName(c_monitor int) &char
 
 // C Original: RLAPI const char *GetClipboardText(void);                         // Get clipboard text content
 // C.GetClipboardText - Get clipboard text content
-fn C.GetClipboardText() charptr
+fn C.GetClipboardText() &char
 
 // C Original: RLAPI void SetClipboardText(const char *text);                    // Set clipboard text content
 // C.SetClipboardText - Set clipboard text content
-fn C.SetClipboardText(c_text charptr)
+fn C.SetClipboardText(c_text &char)
 
 // C Original: RLAPI void ShowCursor(void);                                      // Shows cursor
 // C.ShowCursor - Shows cursor
@@ -263,11 +263,11 @@ fn C.SetTraceLogExit(c_logType int)
 // C Original: RLAPI void SetTraceLogCallback(TraceLogCallback callback);        // Set a trace log callback to enable custom logging
 // C Original: RLAPI void TraceLog(int logType, const char *text, ...);          // Show trace log messages (LOG_DEBUG, LOG_INFO, LOG_WARNING, LOG_ERROR)
 // C.TraceLog - Show trace log messages (LOG_DEBUG, LOG_INFO, LOG_WARNING, LOG_ERROR)
-fn C.TraceLog(c_logType int, c_text charptr, x ...charptr)
+fn C.TraceLog(c_logType int, c_text &char, x ...&&&&char)
 
 // C Original: RLAPI void TakeScreenshot(const char *fileName);                  // Takes a screenshot of current screen (saved a .png)
 // C.TakeScreenshot - Takes a screenshot of current screen (saved a .png)
-fn C.TakeScreenshot(c_fileName charptr)
+fn C.TakeScreenshot(c_fileName &char)
 
 // C Original: RLAPI int GetRandomValue(int min, int max);                       // Returns a random value between min and max (both included)
 // C.GetRandomValue - Returns a random value between min and max (both included)
@@ -275,43 +275,43 @@ fn C.GetRandomValue(c_min int, c_max int) int
 
 // C Original: RLAPI bool FileExists(const char *fileName);                      // Check if file exists
 // C.FileExists - Check if file exists
-fn C.FileExists(c_fileName charptr) bool
+fn C.FileExists(c_fileName &char) bool
 
 // C Original: RLAPI bool IsFileExtension(const char *fileName, const char *ext);// Check file extension
 // C.IsFileExtension - Check file extension
-fn C.IsFileExtension(c_fileName charptr, c_ext charptr) bool
+fn C.IsFileExtension(c_fileName &char, c_ext &char) bool
 
 // C Original: RLAPI bool DirectoryExists(const char *dirPath);                  // Check if a directory path exists
 // C.DirectoryExists - Check if a directory path exists
-fn C.DirectoryExists(c_dirPath charptr) bool
+fn C.DirectoryExists(c_dirPath &char) bool
 
 // C Original: RLAPI const char *GetExtension(const char *fileName);             // Get pointer to extension for a filename string
 // C.GetExtension - Get pointer to extension for a filename string
-fn C.GetExtension(c_fileName charptr) charptr
+fn C.GetExtension(c_fileName &char) &char
 
 // C Original: RLAPI const char *GetFileName(const char *filePath);              // Get pointer to filename for a path string
 // C.GetFileName - Get pointer to filename for a path string
-fn C.GetFileName(c_filePath charptr) charptr
+fn C.GetFileName(c_filePath &char) &char
 
 // C Original: RLAPI const char *GetFileNameWithoutExt(const char *filePath);    // Get filename string without extension (uses static string)
 // C.GetFileNameWithoutExt - Get filename string without extension (uses static string)
-fn C.GetFileNameWithoutExt(c_filePath charptr) charptr
+fn C.GetFileNameWithoutExt(c_filePath &char) &char
 
 // C Original: RLAPI const char *GetDirectoryPath(const char *filePath);         // Get full path for a given fileName with path (uses static string)
 // C.GetDirectoryPath - Get full path for a given fileName with path (uses static string)
-fn C.GetDirectoryPath(c_filePath charptr) charptr
+fn C.GetDirectoryPath(c_filePath &char) &char
 
 // C Original: RLAPI const char *GetPrevDirectoryPath(const char *dirPath);      // Get previous directory path for a given path (uses static string)
 // C.GetPrevDirectoryPath - Get previous directory path for a given path (uses static string)
-fn C.GetPrevDirectoryPath(c_dirPath charptr) charptr
+fn C.GetPrevDirectoryPath(c_dirPath &char) &char
 
 // C Original: RLAPI const char *GetWorkingDirectory(void);                      // Get current working directory (uses static string)
 // C.GetWorkingDirectory - Get current working directory (uses static string)
-fn C.GetWorkingDirectory() charptr
+fn C.GetWorkingDirectory() &char
 
 // C Original: RLAPI char **GetDirectoryFiles(const char *dirPath, int *count);  // Get filenames in a directory path (memory should be freed)
 // C.GetDirectoryFiles - Get filenames in a directory path (memory should be freed)
-fn C.GetDirectoryFiles(c_dirPath charptr, c_count &int) &charptr
+fn C.GetDirectoryFiles(c_dirPath &char, c_count &int) &&char
 
 // C Original: RLAPI void ClearDirectoryFiles(void);                             // Clear directory files paths buffers (free memory)
 // C.ClearDirectoryFiles - Clear directory files paths buffers (free memory)
@@ -319,7 +319,7 @@ fn C.ClearDirectoryFiles()
 
 // C Original: RLAPI bool ChangeDirectory(const char *dir);                      // Change working directory, returns true if success
 // C.ChangeDirectory - Change working directory, returns true if success
-fn C.ChangeDirectory(c_dir charptr) bool
+fn C.ChangeDirectory(c_dir &char) bool
 
 // C Original: RLAPI bool IsFileDropped(void);                                   // Check if a file has been dropped into window
 // C.IsFileDropped - Check if a file has been dropped into window
@@ -327,7 +327,7 @@ fn C.IsFileDropped() bool
 
 // C Original: RLAPI char **GetDroppedFiles(int *count);                         // Get dropped files names (memory should be freed)
 // C.GetDroppedFiles - Get dropped files names (memory should be freed)
-fn C.GetDroppedFiles(c_count &int) &charptr
+fn C.GetDroppedFiles(c_count &int) &&char
 
 // C Original: RLAPI void ClearDroppedFiles(void);                               // Clear dropped files paths buffer (free memory)
 // C.ClearDroppedFiles - Clear dropped files paths buffer (free memory)
@@ -335,19 +335,19 @@ fn C.ClearDroppedFiles()
 
 // C Original: RLAPI long GetFileModTime(const char *fileName);                  // Get file modification time (last write time)
 // C.GetFileModTime - Get file modification time (last write time)
-fn C.GetFileModTime(c_fileName charptr) i64
+fn C.GetFileModTime(c_fileName &char) i64
 
 // C Original: RLAPI unsigned char *CompressData(unsigned char *data, int dataLength, int *compDataLength);        // Compress data (DEFLATE algorythm)
 // C.CompressData - Compress data (DEFLATE algorythm)
-fn C.CompressData(c_data byteptr, c_dataLength int, c_compDataLength &int) byteptr
+fn C.CompressData(c_data &byte, c_dataLength int, c_compDataLength &int) &byte
 
 // C Original: RLAPI unsigned char *DecompressData(unsigned char *compData, int compDataLength, int *dataLength);  // Decompress data (DEFLATE algorythm)
 // C.DecompressData - Decompress data (DEFLATE algorythm)
-fn C.DecompressData(c_compData byteptr, c_compDataLength int, c_dataLength &int) byteptr
+fn C.DecompressData(c_compData &byte, c_compDataLength int, c_dataLength &int) &byte
 
 // C Original: RLAPI void OpenURL(const char *url);                              // Open URL with default system browser (if available)
 // C.OpenURL - Open URL with default system browser (if available)
-fn C.OpenURL(c_url charptr)
+fn C.OpenURL(c_url &char)
 
 // C Original: RLAPI bool IsKeyPressed(int key);                             // Detect if a key has been pressed once
 // C.IsKeyPressed - Detect if a key has been pressed once
@@ -381,11 +381,11 @@ fn C.IsGamepadAvailable(c_gamepad int) bool
 
 // C Original: RLAPI bool IsGamepadName(int gamepad, const char *name);      // Check gamepad name (if available)
 // C.IsGamepadName - Check gamepad name (if available)
-fn C.IsGamepadName(c_gamepad int, c_name charptr) bool
+fn C.IsGamepadName(c_gamepad int, c_name &char) bool
 
 // C Original: RLAPI const char *GetGamepadName(int gamepad);                // Return gamepad internal name id
 // C.GetGamepadName - Return gamepad internal name id
-fn C.GetGamepadName(c_gamepad int) charptr
+fn C.GetGamepadName(c_gamepad int) &char
 
 // C Original: RLAPI bool IsGamepadButtonPressed(int gamepad, int button);   // Detect if a gamepad button has been pressed once
 // C.IsGamepadButtonPressed - Detect if a gamepad button has been pressed once
@@ -455,11 +455,9 @@ fn C.SetMouseOffset(c_offsetX int, c_offsetY int)
 // C.SetMouseScale - Set mouse scaling
 fn C.SetMouseScale(c_scaleX f32, c_scaleY f32)
 
-
 // RLAPI void SetMouseCursor(int cursor);
 // Set mouse cursor
 fn C.SetMouseCursor(cursor int)
-
 
 // C Original: RLAPI int GetMouseWheelMove(void);                            // Returns mouse wheel movement Y
 // C.GetMouseWheelMove - Returns mouse wheel movement Y
@@ -695,23 +693,23 @@ fn C.CheckCollisionPointTriangle(c_point C.Vector2, c_p1 C.Vector2, c_p2 C.Vecto
 
 // C Original: RLAPI Image LoadImage(const char *fileName);                                                             // Load image from file into CPU memory (RAM)
 // C.LoadImage - Load image from file into CPU memory (RAM)
-fn C.LoadImage(c_fileName charptr) C.Image
+fn C.LoadImage(c_fileName &char) C.Image
 
 // C Original: RLAPI Image LoadImageRaw(const char *fileName, int width, int height, int format, int headerSize);       // Load image from RAW file data
 // C.LoadImageRaw - Load image from RAW file data
-fn C.LoadImageRaw(c_fileName charptr, c_width int, c_height int, c_format int, c_headerSize int) C.Image
+fn C.LoadImageRaw(c_fileName &char, c_width int, c_height int, c_format int, c_headerSize int) C.Image
 
 // C Original: RLAPI void ExportImage(Image image, const char *fileName);                                               // Export image data to file
 // C.ExportImage - Export image data to file
-fn C.ExportImage(c_image C.Image, c_fileName charptr)
+fn C.ExportImage(c_image C.Image, c_fileName &char)
 
 // C Original: RLAPI void ExportImageAsCode(Image image, const char *fileName);                                         // Export image as code file defining an array of bytes
 // C.ExportImageAsCode - Export image as code file defining an array of bytes
-fn C.ExportImageAsCode(c_image C.Image, c_fileName charptr)
+fn C.ExportImageAsCode(c_image C.Image, c_fileName &char)
 
 // C Original: RLAPI Texture2D LoadTexture(const char *fileName);                                                       // Load texture from file into GPU memory (VRAM)
 // C.LoadTexture - Load texture from file into GPU memory (VRAM)
-fn C.LoadTexture(c_fileName charptr) C.Texture2D
+fn C.LoadTexture(c_fileName &char) C.Texture2D
 
 // C Original: RLAPI Texture2D LoadTextureFromImage(Image image);                                                       // Load texture from image data
 // C.LoadTextureFromImage - Load texture from image data
@@ -823,11 +821,11 @@ fn C.ImageDither(c_image &C.Image, c_rBpp int, c_gBpp int, c_bBpp int, c_aBpp in
 
 // C Original: RLAPI Image ImageText(const char *text, int fontSize, Color color);                                      // Create an image from text (default font)
 // C.ImageText - Create an image from text (default font)
-fn C.ImageText(c_text charptr, c_fontSize int, c_color C.Color) C.Image
+fn C.ImageText(c_text &char, c_fontSize int, c_color C.Color) C.Image
 
 // C Original: RLAPI Image ImageTextEx(Font font, const char *text, float fontSize, float spacing, Color tint);         // Create an image from text (custom sprite font)
 // C.ImageTextEx - Create an image from text (custom sprite font)
-fn C.ImageTextEx(c_font C.Font, c_text charptr, c_fontSize f32, c_spacing f32, c_tint C.Color) C.Image
+fn C.ImageTextEx(c_font C.Font, c_text &char, c_fontSize f32, c_spacing f32, c_tint C.Color) C.Image
 
 // C Original: RLAPI void ImageDraw(Image *dst, Image src, Rectangle srcRec, Rectangle dstRec, Color tint);             // Draw a source image within a destination image (tint applied to source)
 // C.ImageDraw - Draw a source image within a destination image (tint applied to source)
@@ -843,11 +841,11 @@ fn C.ImageDrawRectangleLines(c_dst &C.Image, c_rec C.Rectangle, c_thick int, c_c
 
 // C Original: RLAPI void ImageDrawText(Image *dst, Vector2 position, const char *text, int fontSize, Color color);     // Draw text (default font) within an image (destination)
 // C.ImageDrawText - Draw text (default font) within an image (destination)
-fn C.ImageDrawText(c_dst &C.Image, c_text charptr, c_pos_x int, c_pos_y int, c_fontSize int, c_color C.Color)
+fn C.ImageDrawText(c_dst &C.Image, c_text &char, c_pos_x int, c_pos_y int, c_fontSize int, c_color C.Color)
 
 // C Original: RLAPI void ImageDrawTextEx(Image *dst, Vector2 position, Font font, const char *text, float fontSize, float spacing, Color color); // Draw text (custom sprite font) within an image (destination)
 // C.ImageDrawTextEx - Draw text (custom sprite font) within an image (destination)
-fn C.ImageDrawTextEx(c_dst &C.Image, c_font C.Font, c_text charptr, c_position C.Vector2, c_fontSize f32, c_spacing f32, c_color C.Color)
+fn C.ImageDrawTextEx(c_dst &C.Image, c_font C.Font, c_text &char, c_position C.Vector2, c_fontSize f32, c_spacing f32, c_color C.Color)
 
 // C Original: RLAPI void ImageFlipVertical(Image *image);                                                              // Flip image vertically
 // C.ImageFlipVertical - Flip image vertically
@@ -967,11 +965,11 @@ fn C.GetFontDefault() C.Font
 
 // C Original: RLAPI Font LoadFont(const char *fileName);                                                  // Load font from file into GPU memory (VRAM)
 // C.LoadFont - Load font from file into GPU memory (VRAM)
-fn C.LoadFont(c_fileName charptr) C.Font
+fn C.LoadFont(c_fileName &char) C.Font
 
 // C Original: RLAPI Font LoadFontEx(const char *fileName, int fontSize, int *fontChars, int charsCount);  // Load font from file with extended parameters
 // C.LoadFontEx - Load font from file with extended parameters
-fn C.LoadFontEx(c_fileName charptr, c_fontSize int, c_fontChars &int, c_charsCount int) C.Font
+fn C.LoadFontEx(c_fileName &char, c_fontSize int, c_fontChars &int, c_charsCount int) C.Font
 
 // C Original: RLAPI Font LoadFontFromImage(Image image, Color key, int firstChar);                        // Load font from Image (XNA style)
 // C.LoadFontFromImage - Load font from Image (XNA style)
@@ -979,7 +977,7 @@ fn C.LoadFontFromImage(c_image C.Image, c_key C.Color, c_firstChar int) C.Font
 
 // C Original: RLAPI CharInfo *LoadFontData(const char *fileName, int fontSize, int *fontChars, int charsCount, int type); // Load font data for further use
 // C.LoadFontData - Load font data for further use
-fn C.LoadFontData(c_fileName charptr, c_data_size int, c_font_size int, c_font_chars &int, c_chars_count int, c_type int) &C.CharInfo
+fn C.LoadFontData(c_fileName &char, c_data_size int, c_font_size int, c_font_chars &int, c_chars_count int, c_type int) &C.CharInfo
 
 // C Original: RLAPI Image GenImageFontAtlas(const CharInfo *chars, Rectangle **recs, int charsCount, int fontSize, int padding, int packMethod);  // Generate image font atlas using chars info
 // C.GenImageFontAtlas - Generate image font atlas using chars info
@@ -995,19 +993,19 @@ fn C.DrawFPS(c_posX int, c_posY int)
 
 // C Original: RLAPI void DrawText(const char *text, int posX, int posY, int fontSize, Color color);       // Draw text (using default font)
 // C.DrawText - Draw text (using default font)
-fn C.DrawText(c_text charptr, c_posX int, c_posY int, c_fontSize int, c_color C.Color)
+fn C.DrawText(c_text &char, c_posX int, c_posY int, c_fontSize int, c_color C.Color)
 
 // C Original: RLAPI void DrawTextEx(Font font, const char *text, Vector2 position, float fontSize, float spacing, Color tint);                // Draw text using font and additional parameters
 // C.DrawTextEx - Draw text using font and additional parameters
-fn C.DrawTextEx(c_font C.Font, c_text charptr, c_position C.Vector2, c_fontSize f32, c_spacing f32, c_tint C.Color)
+fn C.DrawTextEx(c_font C.Font, c_text &char, c_position C.Vector2, c_fontSize f32, c_spacing f32, c_tint C.Color)
 
 // C Original: RLAPI void DrawTextRec(Font font, const char *text, Rectangle rec, float fontSize, float spacing, bool wordWrap, Color tint);   // Draw text using font inside rectangle limits
 // C.DrawTextRec - Draw text using font inside rectangle limits
-fn C.DrawTextRec(c_font C.Font, c_text charptr, c_rec C.Rectangle, c_fontSize f32, c_spacing f32, c_wordWrap bool, c_tint C.Color)
+fn C.DrawTextRec(c_font C.Font, c_text &char, c_rec C.Rectangle, c_fontSize f32, c_spacing f32, c_wordWrap bool, c_tint C.Color)
 
 // C Original: RLAPI void DrawTextRecEx(Font font, const char *text, Rectangle rec, float fontSize, float spacing, bool wordWrap, Color tint,int selectStart, int selectLength, Color selectTint, Color selectBackTint); // Draw text using font inside rectangle limits with support for text selection
 // C.DrawTextRecEx - Draw text using font inside rectangle limits with support for text selection
-fn C.DrawTextRecEx(c_font C.Font, c_text charptr, c_rec C.Rectangle, c_fontSize f32, c_spacing f32, c_wordWrap bool, c_tint C.Color, c_selectStart int, c_selectLength int, c_selectTint C.Color, c_selectBackTint C.Color)
+fn C.DrawTextRecEx(c_font C.Font, c_text &char, c_rec C.Rectangle, c_fontSize f32, c_spacing f32, c_wordWrap bool, c_tint C.Color, c_selectStart int, c_selectLength int, c_selectTint C.Color, c_selectBackTint C.Color)
 
 // C Original: RLAPI void DrawTextCodepoint(Font font, int codepoint, Vector2 position, float scale, Color tint);   // Draw one character (codepoint)
 // C.DrawTextCodepoint - Draw one character (codepoint)
@@ -1015,11 +1013,11 @@ fn C.DrawTextCodepoint(c_font C.Font, c_codepoint int, c_position C.Vector2, c_s
 
 // C Original: RLAPI int MeasureText(const char *text, int fontSize);                                      // Measure string width for default font
 // C.MeasureText - Measure string width for default font
-fn C.MeasureText(c_text charptr, c_fontSize int) int
+fn C.MeasureText(c_text &char, c_fontSize int) int
 
 // C Original: RLAPI Vector2 MeasureTextEx(Font font, const char *text, float fontSize, float spacing);    // Measure string size for Font
 // C.MeasureTextEx - Measure string size for Font
-fn C.MeasureTextEx(c_font C.Font, c_text charptr, c_fontSize f32, c_spacing f32) C.Vector2
+fn C.MeasureTextEx(c_font C.Font, c_text &char, c_fontSize f32, c_spacing f32) C.Vector2
 
 // C Original: RLAPI int GetGlyphIndex(Font font, int codepoint);                                          // Get index position for a unicode character on font
 // C.GetGlyphIndex - Get index position for a unicode character on font
@@ -1027,59 +1025,59 @@ fn C.GetGlyphIndex(c_font C.Font, c_codepoint int) int
 
 // C Original: RLAPI bool TextIsEqual(const char *text1, const char *text2);                               // Check if two text string are equal
 // C.TextIsEqual - Check if two text string are equal
-fn C.TextIsEqual(c_text1 charptr, c_text2 charptr) bool
+fn C.TextIsEqual(c_text1 &char, c_text2 &char) bool
 
 // C Original: RLAPI unsigned int TextLength(const char *text);                                            // Get text length, checks for '\0' ending
 // C.TextLength - Get text length, checks for '\0' ending
-fn C.TextLength(c_text charptr) u32
+fn C.TextLength(c_text &char) u32
 
 // C Original: RLAPI const char *TextFormat(const char *text, ...);                                        // Text formatting with variables (sprintf style)
 // C.TextFormat - Text formatting with variables (sprintf style)
-fn C.TextFormat(c_text charptr, x ...charptr) charptr
+fn C.TextFormat(c_text &char, x ...&&&&char) &char
 
 // C Original: RLAPI const char *TextSubtext(const char *text, int position, int length);                  // Get a piece of a text string
 // C.TextSubtext - Get a piece of a text string
-fn C.TextSubtext(c_text charptr, c_position int, c_length int) charptr
+fn C.TextSubtext(c_text &char, c_position int, c_length int) &char
 
 // C Original: RLAPI char *TextReplace(char *text, const char *replace, const char *by);                   // Replace text string (memory must be freed!)
 // C.TextReplace - Replace text string (memory must be freed!)
-fn C.TextReplace(c_text &char, c_replace charptr, c_by charptr) &char
+fn C.TextReplace(c_text &char, c_replace &char, c_by &char) &char
 
 // C Original: RLAPI char *TextInsert(const char *text, const char *insert, int position);                 // Insert text in a position (memory must be freed!)
 // C.TextInsert - Insert text in a position (memory must be freed!)
-fn C.TextInsert(c_text charptr, c_insert charptr, c_position int) &char
+fn C.TextInsert(c_text &char, c_insert &char, c_position int) &char
 
 // C Original: RLAPI const char *TextJoin(const char **textList, int count, const char *delimiter);        // Join text strings with delimiter
 // C.TextJoin - Join text strings with delimiter
-fn C.TextJoin(c_textList &charptr, c_count int, c_delimiter charptr) charptr
+fn C.TextJoin(c_textList &&char, c_count int, c_delimiter &char) &char
 
 // C Original: RLAPI const char **TextSplit(const char *text, char delimiter, int *count);                 // Split text into multiple strings
 // C.TextSplit - Split text into multiple strings
-fn C.TextSplit(c_text charptr, c_delimiter char, c_count &int) &charptr
+fn C.TextSplit(c_text &char, c_delimiter char, c_count &int) &&char
 
 // C Original: RLAPI void TextAppend(char *text, const char *append, int *position);                       // Append text at specific position and move cursor!
 // C.TextAppend - Append text at specific position and move cursor!
-fn C.TextAppend(c_text &char, c_append charptr, c_position &int)
+fn C.TextAppend(c_text &char, c_append &char, c_position &int)
 
 // C Original: RLAPI int TextFindIndex(const char *text, const char *find);                                // Find first text occurrence within a string
 // C.TextFindIndex - Find first text occurrence within a string
-fn C.TextFindIndex(c_text charptr, c_find charptr) int
+fn C.TextFindIndex(c_text &char, c_find &char) int
 
 // C Original: RLAPI const char *TextToUpper(const char *text);                      // Get upper case version of provided string
 // C.TextToUpper - Get upper case version of provided string
-fn C.TextToUpper(c_text charptr) charptr
+fn C.TextToUpper(c_text &char) &char
 
 // C Original: RLAPI const char *TextToLower(const char *text);                      // Get lower case version of provided string
 // C.TextToLower - Get lower case version of provided string
-fn C.TextToLower(c_text charptr) charptr
+fn C.TextToLower(c_text &char) &char
 
 // C Original: RLAPI const char *TextToPascal(const char *text);                     // Get Pascal case notation version of provided string
 // C.TextToPascal - Get Pascal case notation version of provided string
-fn C.TextToPascal(c_text charptr) charptr
+fn C.TextToPascal(c_text &char) &char
 
 // C Original: RLAPI int TextToInteger(const char *text);                            // Get integer value from text (negative values not supported)
 // C.TextToInteger - Get integer value from text (negative values not supported)
-fn C.TextToInteger(c_text charptr) int
+fn C.TextToInteger(c_text &char) int
 
 // C Original: RLAPI char *TextToUtf8(int *codepoints, int length);                  // Encode text codepoint into utf8 text (memory must be freed!)
 // C.TextToUtf8 - Encode text codepoint into utf8 text (memory must be freed!)
@@ -1087,19 +1085,19 @@ fn C.TextToUtf8(c_codepoints &int, c_length int) &char
 
 // C Original: RLAPI int *GetCodepoints(const char *text, int *count);               // Get all codepoints in a string, codepoints count returned by parameters
 // C.GetCodepoints - Get all codepoints in a string, codepoints count returned by parameters
-fn C.GetCodepoints(c_text charptr, c_count &int) &int
+fn C.GetCodepoints(c_text &char, c_count &int) &int
 
 // C Original: RLAPI int GetCodepointsCount(const char *text);                       // Get total number of characters (codepoints) in a UTF8 encoded string
 // C.GetCodepointsCount - Get total number of characters (codepoints) in a UTF8 encoded string
-fn C.GetCodepointsCount(c_text charptr) int
+fn C.GetCodepointsCount(c_text &char) int
 
 // C Original: RLAPI int GetNextCodepoint(const char *text, int *bytesProcessed);    // Returns next codepoint in a UTF8 encoded string; 0x3f('?') is returned on failure
 // C.GetNextCodepoint - Returns next codepoint in a UTF8 encoded string; 0x3f('?') is returned on failure
-fn C.GetNextCodepoint(c_text charptr, c_bytesProcessed &int) int
+fn C.GetNextCodepoint(c_text &char, c_bytesProcessed &int) int
 
 // C Original: RLAPI const char *CodepointToUtf8(int codepoint, int *byteLength);    // Encode codepoint into utf8 text (char array length returned as parameter)
 // C.CodepointToUtf8 - Encode codepoint into utf8 text (char array length returned as parameter)
-fn C.CodepointToUtf8(c_codepoint int, c_byteLength &int) charptr
+fn C.CodepointToUtf8(c_codepoint int, c_byteLength &int) &char
 
 // C Original: RLAPI void DrawLine3D(Vector3 startPos, Vector3 endPos, Color color);                                    // Draw a line in 3D world space
 // C.DrawLine3D - Draw a line in 3D world space
@@ -1167,7 +1165,7 @@ fn C.DrawGizmo(c_position C.Vector3)
 
 // C Original: RLAPI Model LoadModel(const char *fileName);                                                            // Load model from files (meshes and materials)
 // C.LoadModel - Load model from files (meshes and materials)
-fn C.LoadModel(c_fileName charptr) C.Model
+fn C.LoadModel(c_fileName &char) C.Model
 
 // C Original: RLAPI Model LoadModelFromMesh(Mesh mesh);                                                               // Load model from generated mesh (default material)
 // C.LoadModelFromMesh - Load model from generated mesh (default material)
@@ -1179,11 +1177,11 @@ fn C.UnloadModel(c_model C.Model)
 
 // C Original: RLAPI Mesh *LoadMeshes(const char *fileName, int *meshCount);                                           // Load meshes from model file
 // C.LoadMeshes - Load meshes from model file
-fn C.LoadMeshes(c_fileName charptr, c_meshCount &int) &C.Mesh
+fn C.LoadMeshes(c_fileName &char, c_meshCount &int) &C.Mesh
 
 // C Original: RLAPI void ExportMesh(Mesh mesh, const char *fileName);                                                 // Export mesh data to file
 // C.ExportMesh - Export mesh data to file
-fn C.ExportMesh(c_mesh C.Mesh, c_fileName charptr)
+fn C.ExportMesh(c_mesh C.Mesh, c_fileName &char)
 
 // C Original: RLAPI void UnloadMesh(Mesh mesh);                                                                       // Unload mesh from memory (RAM and/or VRAM)
 // C.UnloadMesh - Unload mesh from memory (RAM and/or VRAM)
@@ -1191,7 +1189,7 @@ fn C.UnloadMesh(c_mesh C.Mesh)
 
 // C Original: RLAPI Material *LoadMaterials(const char *fileName, int *materialCount);                                // Load materials from model file
 // C.LoadMaterials - Load materials from model file
-fn C.LoadMaterials(c_fileName charptr, c_materialCount &int) &C.Material
+fn C.LoadMaterials(c_fileName &char, c_materialCount &int) &C.Material
 
 // C Original: RLAPI Material LoadMaterialDefault(void);                                                               // Load default material (Supports: DIFFUSE, SPECULAR, NORMAL maps)
 // C.LoadMaterialDefault - Load default material (Supports: DIFFUSE, SPECULAR, NORMAL maps)
@@ -1211,7 +1209,7 @@ fn C.SetModelMeshMaterial(c_model &C.Model, c_meshId int, c_materialId int)
 
 // C Original: RLAPI ModelAnimation *LoadModelAnimations(const char *fileName, int *animsCount);                       // Load model animations from file
 // C.LoadModelAnimations - Load model animations from file
-fn C.LoadModelAnimations(c_fileName charptr, c_animsCount &int) &C.ModelAnimation
+fn C.LoadModelAnimations(c_fileName &char, c_animsCount &int) &C.ModelAnimation
 
 // C Original: RLAPI void UpdateModelAnimation(Model model, ModelAnimation anim, int frame);                           // Update model animation pose
 // C.UpdateModelAnimation - Update model animation pose
@@ -1343,15 +1341,15 @@ fn C.GetCollisionRayGround(c_ray C.Ray, c_groundHeight f32) C.RayHitInfo
 
 // C Original: RLAPI char *LoadText(const char *fileName);                               // Load chars array from text file
 // C.LoadText - Load chars array from text file
-fn C.LoadText(c_fileName charptr) &char
+fn C.LoadText(c_fileName &char) &char
 
 // C Original: RLAPI Shader LoadShader(const char *vsFileName, const char *fsFileName);  // Load shader from files and bind default locations
 // C.LoadShader - Load shader from files and bind default locations
-fn C.LoadShader(c_vsFileName charptr, c_fsFileName charptr) C.Shader
+fn C.LoadShader(c_vsFileName &char, c_fsFileName &char) C.Shader
 
 // C Original: RLAPI Shader LoadShaderCode(const char *vsCode, const char *fsCode);                  // Load shader from code strings and bind default locations
 // C.LoadShaderCode - Load shader from code strings and bind default locations
-fn C.LoadShaderCode(c_vsCode charptr, c_fsCode charptr) C.Shader
+fn C.LoadShaderCode(c_vsCode &char, c_fsCode &char) C.Shader
 
 // C Original: RLAPI void UnloadShader(Shader shader);                                   // Unload shader from GPU memory (VRAM)
 // C.UnloadShader - Unload shader from GPU memory (VRAM)
@@ -1367,7 +1365,7 @@ fn C.GetTextureDefault() C.Texture2D
 
 // C Original: RLAPI int GetShaderLocation(Shader shader, const char *uniformName);      // Get shader uniform location
 // C.GetShaderLocation - Get shader uniform location
-fn C.GetShaderLocation(c_shader C.Shader, c_uniformName charptr) int
+fn C.GetShaderLocation(c_shader C.Shader, c_uniformName &char) int
 
 // C Original: RLAPI void SetShaderValue(Shader shader, int uniformLoc, const void *value, int uniformType);               // Set shader uniform value
 // C.SetShaderValue - Set shader uniform value
@@ -1483,11 +1481,11 @@ fn C.SetMasterVolume(c_volume f32)
 
 // C Original: RLAPI Wave LoadWave(const char *fileName);                            // Load wave data from file
 // C.LoadWave - Load wave data from file
-fn C.LoadWave(c_fileName charptr) C.Wave
+fn C.LoadWave(c_fileName &char) C.Wave
 
 // C Original: RLAPI Sound LoadSound(const char *fileName);                          // Load sound from file
 // C.LoadSound - Load sound from file
-fn C.LoadSound(c_fileName charptr) C.Sound
+fn C.LoadSound(c_fileName &char) C.Sound
 
 // C Original: RLAPI Sound LoadSoundFromWave(Wave wave);                             // Load sound from wave data
 // C.LoadSoundFromWave - Load sound from wave data
@@ -1507,11 +1505,11 @@ fn C.UnloadSound(c_sound C.Sound)
 
 // C Original: RLAPI void ExportWave(Wave wave, const char *fileName);               // Export wave data to file
 // C.ExportWave - Export wave data to file
-fn C.ExportWave(c_wave C.Wave, c_fileName charptr)
+fn C.ExportWave(c_wave C.Wave, c_fileName &char)
 
 // C Original: RLAPI void ExportWaveAsCode(Wave wave, const char *fileName);         // Export wave sample data to code (.h)
 // C.ExportWaveAsCode - Export wave sample data to code (.h)
-fn C.ExportWaveAsCode(c_wave C.Wave, c_fileName charptr)
+fn C.ExportWaveAsCode(c_wave C.Wave, c_fileName &char)
 
 // C Original: RLAPI void PlaySound(Sound sound);                                    // Play a sound
 // C.PlaySound - Play a sound
@@ -1567,7 +1565,7 @@ fn C.WaveCrop(c_wave &C.Wave, c_initSample int, c_finalSample int)
 
 // C Original: RLAPI Music LoadMusicStream(const char *fileName);                    // Load music stream from file
 // C.LoadMusicStream - Load music stream from file
-fn C.LoadMusicStream(c_fileName charptr) C.Music
+fn C.LoadMusicStream(c_fileName &char) C.Music
 
 // C Original: RLAPI void UnloadMusicStream(Music music);                            // Unload music stream
 // C.UnloadMusicStream - Unload music stream

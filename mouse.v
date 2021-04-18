@@ -8,18 +8,18 @@ pub const (
 )
 
 pub const (
-    mouse_cursor_default       = 0
-    mouse_cursor_arrow         = 1
-    mouse_cursor_ibeam         = 2
-    mouse_cursor_crosshair     = 3
-		mouse_cursor_pointing_hand = 4
-		mouse_cursor_hand = 4
-    mouse_cursor_resize_ew     = 5     // the horizontal resize/move arrow shape
-    mouse_cursor_resize_ns     = 6     // the vertical resize/move arrow shape
-    mouse_cursor_resize_nwse   = 7     // the top-left to bottom-right diagonal resize/move arrow shape
-    mouse_cursor_resize_nesw   = 8     // the top-right to bottom-left diagonal resize/move arrow shape
-    mouse_cursor_resize_all    = 9     // the omni-directional resize/move cursor shape
-    mouse_cursor_not_allowed   = 10     // the operation-not-allowed shape
+	mouse_cursor_default       = 0
+	mouse_cursor_arrow         = 1
+	mouse_cursor_ibeam         = 2
+	mouse_cursor_crosshair     = 3
+	mouse_cursor_pointing_hand = 4
+	mouse_cursor_hand          = 4
+	mouse_cursor_resize_ew     = 5 // the horizontal resize/move arrow shape
+	mouse_cursor_resize_ns     = 6 // the vertical resize/move arrow shape
+	mouse_cursor_resize_nwse   = 7 // the top-left to bottom-right diagonal resize/move arrow shape
+	mouse_cursor_resize_nesw   = 8 // the top-right to bottom-left diagonal resize/move arrow shape
+	mouse_cursor_resize_all    = 9 // the omni-directional resize/move cursor shape
+	mouse_cursor_not_allowed   = 10 // the operation-not-allowed shape
 )
 
 [inline]

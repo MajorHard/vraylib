@@ -18,7 +18,7 @@ pub const (
 
 // Set camera mode (multiple camera modes available)
 [inline]
-pub fn set_camera_mode(camera C.Camera, mode int) {
+pub fn set_camera_mode(camera C.Camera3D, mode int) {
 	C.SetCameraMode(camera, mode)
 }
 
