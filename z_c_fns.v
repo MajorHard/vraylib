@@ -513,7 +513,7 @@ fn C.GetGesturePinchAngle() f32
 
 // C Original: RLAPI void SetCameraMode(Camera camera, int mode);                // Set camera mode (multiple camera modes available)
 // C.SetCameraMode - Set camera mode (multiple camera modes available)
-fn C.SetCameraMode(c_camera C.Camera, c_mode int)
+fn C.SetCameraMode(c_camera C.Camera3D, c_mode int)
 
 // C Original: RLAPI void UpdateCamera(Camera *camera);                          // Update camera position for selected mode
 // C.UpdateCamera - Update camera position for selected mode
