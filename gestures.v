@@ -1,6 +1,6 @@
 module vraylib
 
-pub const(
+pub const (
 	gesture_none        = 0
 	gesture_tap         = 1
 	gesture_doubletap   = 2

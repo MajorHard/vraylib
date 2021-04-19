@@ -263,7 +263,7 @@ fn C.SetTraceLogExit(c_logType int)
 // C Original: RLAPI void SetTraceLogCallback(TraceLogCallback callback);        // Set a trace log callback to enable custom logging
 // C Original: RLAPI void TraceLog(int logType, const char *text, ...);          // Show trace log messages (LOG_DEBUG, LOG_INFO, LOG_WARNING, LOG_ERROR)
 // C.TraceLog - Show trace log messages (LOG_DEBUG, LOG_INFO, LOG_WARNING, LOG_ERROR)
-fn C.TraceLog(c_logType int, c_text &char, x ...&&&&char)
+fn C.TraceLog(c_logType int, c_text &char, x ...&&&&&&&&char)
 
 // C Original: RLAPI void TakeScreenshot(const char *fileName);                  // Takes a screenshot of current screen (saved a .png)
 // C.TakeScreenshot - Takes a screenshot of current screen (saved a .png)
@@ -1033,7 +1033,7 @@ fn C.TextLength(c_text &char) u32
 
 // C Original: RLAPI const char *TextFormat(const char *text, ...);                                        // Text formatting with variables (sprintf style)
 // C.TextFormat - Text formatting with variables (sprintf style)
-fn C.TextFormat(c_text &char, x ...&&&&char) &char
+fn C.TextFormat(c_text &char, x ...&&&&&&&&char) &char
 
 // C Original: RLAPI const char *TextSubtext(const char *text, int position, int length);                  // Get a piece of a text string
 // C.TextSubtext - Get a piece of a text string
