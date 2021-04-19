@@ -168,13 +168,13 @@ pub fn get_monitor_physical_height(monitor int) int {
 // Get the human-readable, UTF-8 encoded name of the primary monitor
 [inline]
 pub fn get_monitor_name(monitor int) string {
-	return &&&byte(C.GetMonitorName(monitor)).str()
+	return byte(C.GetMonitorName(monitor)).str()
 }
 
 // Get clipboard text content
 [inline]
 pub fn get_clipboard_text() string {
-	return &&&byte(C.GetClipboardText()).str()
+	return byte(C.GetClipboardText()).str()
 }
 
 // Set clipboard text content

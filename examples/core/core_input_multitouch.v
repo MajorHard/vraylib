@@ -9,7 +9,7 @@ const (
 )
 
 fn main() {
-	vraylib.init_window(screen_width, screen_height, 'vraylib [core] example - mouse input')
+	vraylib.init_window(screen_width, screen_height, 'vraylib [core] example - mouse multitouch')
 
 	mut ball_position := C.Vector2{
 		x: -100

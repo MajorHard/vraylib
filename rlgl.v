@@ -40,7 +40,7 @@ pub const (
 // Load chars array from text file
 [inline]
 pub fn load_text(fileName string) string {
-	return &&&byte(fileName.str).str()
+	return byte(fileName.str).str()
 }
 
 // Load shader from files and bind default locations

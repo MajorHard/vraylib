@@ -56,25 +56,25 @@ pub fn is_file_extension(fileName string, ext string) bool {
 // Get filename extension
 [inline]
 pub fn get_extension(fileName string) string {
-	return &&&byte(C.GetExtension(fileName.str)).str()
+	return byte(C.GetExtension(fileName.str)).str()
 }
 
 // Get filename
 [inline]
 pub fn get_file_name(fileName string) string {
-	return &&&byte(C.GetFileName(fileName.str)).str()
+	return byte(C.GetFileName(fileName.str)).str()
 }
 
 // Get full path of directory of filename
 [inline]
 pub fn get_directory_path(fileName string) string {
-	return &&&byte(C.GetDirectoryPath(fileName.str)).str()
+	return byte(C.GetDirectoryPath(fileName.str)).str()
 }
 
 // Get current working directory
 [inline]
 pub fn get_working_directory() string {
-	return &&&byte(C.GetWorkingDirectory()).str()
+	return byte(C.GetWorkingDirectory()).str()
 }
 
 // Change working directory, returns true if success
