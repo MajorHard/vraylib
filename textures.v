@@ -1,5 +1,18 @@
 module vraylib
 
+pub const (
+	texture_filter_point           = 0 // no filter, just pixel aproximation
+	texture_filter_bilinear        = 1 // linear filtering
+	texture_filter_trilinear       = 2 // trilinear filtering (linear with mipmaps)
+	texture_filter_anisotropic_4x  = 3 // anisotropic filtering 4x
+	texture_filter_anisotropic_8x  = 4 // anisotropic filtering 8x
+	texture_filter_anisotropic_16x = 5 // anisotropic filtering 16x
+	texture_wrap_repeat            = 0 // repeats texture in tiled mode
+	texture_wrap_clamp             = 1 // clamps texture to edge pixel in tiled mode
+	texture_wrap_mirror_repeat     = 2 // mirrors and repeats the texture in tiled mode
+	texture_wrap_mirror_clamp      = 3 // mirrors and clamps to border the texture in tiled mode
+)
+
 // -------------------------------------------------
 // 	Module - Textures
 // -------------------------------------------------
