@@ -2,6 +2,15 @@ module vraylib
 
 #flag linux -lraylib -lGL -lm -lpthread -ldl -lrt -lX11
 #include "raylib.h"
+#include "raymath.h"
+
+pub struct C.Matrix2x2 {
+pub mut:
+ m00 f32
+ m01 f32
+ m10 f32
+ m11 f32
+}
 
 pub struct C.Vector2 {
 pub mut:
