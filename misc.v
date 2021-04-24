@@ -13,6 +13,13 @@ pub fn get_world_to_screen(position Vector3, camera C.Camera) Vector2 {
 	return C.GetWorldToScreen(position, camera)
 }
 
+// Returns the screen space position for a 2d world space position
+[inline]
+pub fn get_world_to_screen2d(position C.Vector2, camera C.Camera2D) C.Vector2 {
+	return C.GetWorldToScreen2D(position, camera)
+}
+
+
 // Returns camera transform matrix (view matrix)
 [inline]
 pub fn get_camera_matrix(camera C.Camera) Matrix {
