@@ -27,8 +27,8 @@ pub fn vector2_dot_product(v1 C.Vector2, v2 C.Vector2) f32 {
 	return C.Vector2DotProduct(v1, v2)
 }
 
-fn C.Vector2Distance(v1 C.Vector2, v2 C.Vector2) C.Vector2
-pub fn vector2_distrance(v1 C.Vector2, v2 C.Vector2) C.Vector2 {
+fn C.Vector2Distance(v1 C.Vector2, v2 C.Vector2) f32
+pub fn vector2_distance(v1 C.Vector2, v2 C.Vector2) f32 {
 	return C.Vector2Distance(v1, v2)
 }
 
