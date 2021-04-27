@@ -1,4 +1,4 @@
-** DOES NOT WORK AN WINDOWS **
+** DOES NOT WORK ON WINDOWS **
 please switch to a free and open source operating system
 or make a pull request
 
