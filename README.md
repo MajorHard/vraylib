@@ -1,3 +1,8 @@
+** DOES NOT WORK ON WINDOWS **
+please switch to a free and open source operating system
+or make a pull request
+
+
 # V Wrapper for the Raylib C framework, version 3.5.0
 ## Dev Notes
 
