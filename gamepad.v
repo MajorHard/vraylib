@@ -58,7 +58,7 @@ pub fn is_gamepad_name(gamepad int, name string) bool {
 // Return gamepad internal name id
 [inline]
 pub fn get_gamepad_name(gamepad int) string {
-	return byte(C.GetGamepadName(gamepad)).str()
+	return C.GetGamepadName(gamepad).str()
 }
 
 // Detect if a gamepad button has been pressed once

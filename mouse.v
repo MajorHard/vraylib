@@ -78,6 +78,6 @@ pub fn set_mouse_cursor(cursor int) {
 }
 
 [inline]
-pub fn get_mouse_wheel_move() int {
+pub fn get_mouse_wheel_move() f32 {
 	return C.GetMouseWheelMove()
 }
