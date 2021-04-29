@@ -1,16 +1,14 @@
 module main
 
-import MajorHard.vraylib
+import waotzi.vraylib
 
 const (
-	screenWidth = 800
-	screenHeight = 450
+	screen_width  = 800
+	screen_height = 450
 )
 
-
 fn main() {
-	vraylib.init_window(screenWidth, screenHeight, "vraylib [core] example - basic window")
-	defer { vraylib.close_window() }
+	vraylib.init_window(screen_width, screen_height, 'vraylib [core] example - basic window')
 	vraylib.set_target_fps(60)
 
 	for {
@@ -19,11 +17,12 @@ fn main() {
 		}
 		{
 			vraylib.begin_drawing()
-			defer {  vraylib.end_drawing() }
-
 			vraylib.clear_background(vraylib.raywhite)
-			vraylib.draw_text("Congrats! You created your first window!", 190, 200, 20, vraylib.lightgray)
+			vraylib.draw_text('Congrats! You created your first window!', 190, 200, 20,
+				vraylib.lightgray)
+			vraylib.end_drawing()
 		}
 	}
 
+	vraylib.close_window()
 }
